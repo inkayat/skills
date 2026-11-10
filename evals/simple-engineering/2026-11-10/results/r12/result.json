@@ -1,0 +1,57 @@
+{
+  "id": "r12",
+  "case": "providers",
+  "arm": "candidate",
+  "repetition": 2,
+  "public": {
+    "command": [
+      "/Users/inkayat/.local/share/mise/installs/python/3.14/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_argument_overrides_config (test_planner.AssistantSelectionTests.test_argument_overrides_config) ... ok\ntest_config_selections_preserve_task_and_stages (test_planner.AssistantSelectionTests.test_config_selections_preserve_task_and_stages) ... ok\ntest_invalid_argument_selection (test_planner.AssistantSelectionTests.test_invalid_argument_selection) ... ok\ntest_invalid_config_selection (test_planner.AssistantSelectionTests.test_invalid_config_selection) ... ok\ntest_custom_stages (test_planner.ExistingPlanTests.test_custom_stages) ... ok\ntest_default (test_planner.ExistingPlanTests.test_default) ... ok\ntest_config_selections (test_planner.PlannerCommandTests.test_config_selections) ... ok\ntest_default (test_planner.PlannerCommandTests.test_default) ... ok\ntest_flag_overrides_config_and_preserves_stages (test_planner.PlannerCommandTests.test_flag_overrides_config_and_preserves_stages) ... ok\ntest_flag_selections (test_planner.PlannerCommandTests.test_flag_selections) ... ok\ntest_invalid_config_selection (test_planner.PlannerCommandTests.test_invalid_config_selection) ... ok\ntest_invalid_flag_does_not_fall_back_to_config (test_planner.PlannerCommandTests.test_invalid_flag_does_not_fall_back_to_config) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.278s\n\nOK\n"
+  },
+  "hidden": {
+    "command": [
+      "/Users/inkayat/.local/share/mise/installs/python/3.14/bin/python3",
+      "<EVALUATION_ROOT>/cases/providers/grader.py",
+      "<EVALUATION_ROOT>/runs/r12/workspace"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_cli_all_three (__main__.Contract.test_cli_all_three) ... ok\ntest_cli_precedence_and_output (__main__.Contract.test_cli_precedence_and_output) ... ok\ntest_cli_rejects_unknown (__main__.Contract.test_cli_rejects_unknown) ... ok\ntest_config_all_three (__main__.Contract.test_config_all_three) ... ok\ntest_config_rejects_unknown (__main__.Contract.test_config_rejects_unknown) ... ok\ntest_default_and_existing_stages (__main__.Contract.test_default_and_existing_stages) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.127s\n\nOK\n"
+  },
+  "all_checks_passed": true,
+  "changes": [
+    {
+      "path": "README.md",
+      "before_sha256": "584dc8734ffadd3974057d8ed7f0dbe452ffe5323e82c9624781d68182286f59",
+      "after_sha256": "0e3a45fa86fb36fc93474d434a402b1b7feb1fa0a3e299bca985a435a29b0e91",
+      "before_lines": 7,
+      "after_lines": 17
+    },
+    {
+      "path": "planner.py",
+      "before_sha256": "2454e35338f7b20e2358c739a0eff9509d544102523d7aa5db716a09d1dada48",
+      "after_sha256": "21a53e4c8d68cc6949b298badaf110f84975e8fd9a270a0aa34b7ee7001099e6",
+      "before_lines": 20,
+      "after_lines": 30
+    },
+    {
+      "path": "tests/test_planner.py",
+      "before_sha256": "b0330052ca13f778d2119734e90541bfb11aba34eb5712d5dc83f5e6973246b5",
+      "after_sha256": "a136b4c1d698712e7507de116e92757aa1278047b6dad96551eebf52bbe113a4",
+      "before_lines": 8,
+      "after_lines": 95
+    }
+  ],
+  "unrelated_sentinel_changed": false,
+  "token_usage": null,
+  "solver_duration_ms": null
+}

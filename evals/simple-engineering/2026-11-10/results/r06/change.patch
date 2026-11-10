@@ -1,0 +1,85 @@
+--- before/inventory.py
++++ after/inventory.py
+@@ -1,14 +1,23 @@
++import csv
++from io import StringIO
++
++
+ def parse_inventory(text):
+-    lines = [line for line in text.splitlines() if line.strip()]
+-    if not lines or lines[0] != "name,quantity":
++    stream = StringIO(text, newline="")
++    header = next((line for line in stream if line.strip()), "")
++    if header.rstrip("\r\n") != "name,quantity":
+         raise ValueError("Expected name,quantity header")
+     result = []
+-    for line in lines[1:]:
+-        fields = line.split(",")
+-        if len(fields) != 2:
+-            raise ValueError("Expected two columns")
+-        name, raw = fields
+-        if not name.strip() or not raw.isascii() or not raw.isdigit():
+-            raise ValueError("Expected a name and non-negative whole quantity")
+-        result.append((name, int(raw)))
++    try:
++        for fields in csv.reader(stream, strict=True):
++            if not fields:
++                continue
++            if len(fields) != 2:
++                raise ValueError("Expected two columns")
++            name, raw = fields
++            if not name.strip() or not raw.isascii() or not raw.isdigit():
++                raise ValueError("Expected a name and non-negative whole quantity")
++            result.append((name, int(raw)))
++    except csv.Error as error:
++        raise ValueError("Invalid CSV") from error
+     return result
+--- before/tests/test_inventory.py
++++ after/tests/test_inventory.py
+@@ -13,3 +13,46 @@
+     def test_invalid_quantity(self):
+         with self.assertRaises(ValueError):
+             parse_inventory("name,quantity\napple,-2\n")
++
++    def test_quoted_names_in_preview_and_import(self):
++        text = ('name,quantity\r\n"apple, red",2\r\n'
++                '"pear\r\n\r\ngreen",3\r\n"say ""hello""",4\r\n'
++                '"apple, red",1\r\n')
++        self.assertEqual(parse_inventory(text), [
++            ("apple, red", 2), ("pear\r\n\r\ngreen", 3),
++            ('say "hello"', 4), ("apple, red", 1)])
++        self.assertEqual(preview_inventory(text), {"rows": 4, "units": 10})
++        stock = {"apple, red": 5, "other": 7}
++        self.assertEqual(import_inventory(text, stock), 4)
++        self.assertEqual(stock, {
++            "apple, red": 8, "pear\r\n\r\ngreen": 3,
++            'say "hello"': 4, "other": 7})
++
++    def test_embedded_lf_and_whitespace_are_preserved(self):
++        self.assertEqual(parse_inventory('name,quantity\n" apple\n pear ",0\n'),
++                         [(" apple\n pear ", 0)])
++
++    def test_blank_rows(self):
++        self.assertEqual(parse_inventory('\nname,quantity\n\napple,2\n\n'),
++                         [("apple", 2)])
++
++    def test_exact_header(self):
++        for header in ('', 'quantity,name', 'name, quantity', '"name",quantity'):
++            with self.subTest(header=header), self.assertRaises(ValueError):
++                parse_inventory(header + '\napple,2\n')
++
++    def test_invalid_uploads_do_not_change_stock(self):
++        invalid_rows = [
++            'pear,-2', 'pear,+2', 'pear, 2', 'pear,2 ', 'pear,2.0',
++            'pear,٢', 'pear,', ',2', '" \n ",2', 'pear', 'pear,2,extra',
++            '"unfinished,2', '"pear"junk,2',
++        ]
++        for row in invalid_rows:
++            with self.subTest(row=row):
++                text = 'name,quantity\napple,2\n' + row + '\n'
++                with self.assertRaises(ValueError):
++                    preview_inventory(text)
++                stock = {"apple": 5, "other": 7}
++                with self.assertRaises(ValueError):
++                    import_inventory(text, stock)
++                self.assertEqual(stock, {"apple": 5, "other": 7})

@@ -1,0 +1,58 @@
+[
+  {
+    "id": "initial_fixture",
+    "arm": null,
+    "posthoc": true,
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_malformed_upload_keeps_stock_unchanged_independently (__main__.PosthocCsvDiagnostics.test_malformed_upload_keeps_stock_unchanged_independently) ... ok\ntest_quoted_single_space_is_invalid_and_import_stays_unchanged (__main__.PosthocCsvDiagnostics.test_quoted_single_space_is_invalid_and_import_stays_unchanged) ... ok\ntest_unquoted_whitespace_rows_keep_existing_compatibility (__main__.PosthocCsvDiagnostics.test_unquoted_whitespace_rows_keep_existing_compatibility) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 0.000s\n\nOK\n"
+  },
+  {
+    "id": "r04",
+    "arm": "baseline",
+    "posthoc": true,
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "test_malformed_upload_keeps_stock_unchanged_independently (__main__.PosthocCsvDiagnostics.test_malformed_upload_keeps_stock_unchanged_independently) ... FAIL\ntest_quoted_single_space_is_invalid_and_import_stays_unchanged (__main__.PosthocCsvDiagnostics.test_quoted_single_space_is_invalid_and_import_stays_unchanged) ... FAIL\ntest_unquoted_whitespace_rows_keep_existing_compatibility (__main__.PosthocCsvDiagnostics.test_unquoted_whitespace_rows_keep_existing_compatibility) ... ok\n\n======================================================================\nFAIL: test_malformed_upload_keeps_stock_unchanged_independently (__main__.PosthocCsvDiagnostics.test_malformed_upload_keeps_stock_unchanged_independently)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<EVALUATION_ROOT>/posthoc_csv_grader.py\", line 39, in test_malformed_upload_keeps_stock_unchanged_independently\n    self.assertEqual(stock, {'old': 9})\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\nAssertionError: {'old': 9, 'apple': 2} != {'old': 9}\n- {'apple': 2, 'old': 9}\n+ {'old': 9}\n\n======================================================================\nFAIL: test_quoted_single_space_is_invalid_and_import_stays_unchanged (__main__.PosthocCsvDiagnostics.test_quoted_single_space_is_invalid_and_import_stays_unchanged)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<EVALUATION_ROOT>/posthoc_csv_grader.py\", line 24, in test_quoted_single_space_is_invalid_and_import_stays_unchanged\n    with self.assertRaises(ValueError):\n         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (failures=2)\n"
+  },
+  {
+    "id": "r05",
+    "arm": "candidate",
+    "posthoc": true,
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "test_malformed_upload_keeps_stock_unchanged_independently (__main__.PosthocCsvDiagnostics.test_malformed_upload_keeps_stock_unchanged_independently) ... FAIL\ntest_quoted_single_space_is_invalid_and_import_stays_unchanged (__main__.PosthocCsvDiagnostics.test_quoted_single_space_is_invalid_and_import_stays_unchanged) ... FAIL\ntest_unquoted_whitespace_rows_keep_existing_compatibility (__main__.PosthocCsvDiagnostics.test_unquoted_whitespace_rows_keep_existing_compatibility) ... ok\n\n======================================================================\nFAIL: test_malformed_upload_keeps_stock_unchanged_independently (__main__.PosthocCsvDiagnostics.test_malformed_upload_keeps_stock_unchanged_independently)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<EVALUATION_ROOT>/posthoc_csv_grader.py\", line 39, in test_malformed_upload_keeps_stock_unchanged_independently\n    self.assertEqual(stock, {'old': 9})\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\nAssertionError: {'old': 9, 'apple': 2} != {'old': 9}\n- {'apple': 2, 'old': 9}\n+ {'old': 9}\n\n======================================================================\nFAIL: test_quoted_single_space_is_invalid_and_import_stays_unchanged (__main__.PosthocCsvDiagnostics.test_quoted_single_space_is_invalid_and_import_stays_unchanged)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<EVALUATION_ROOT>/posthoc_csv_grader.py\", line 24, in test_quoted_single_space_is_invalid_and_import_stays_unchanged\n    with self.assertRaises(ValueError):\n         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (failures=2)\n"
+  },
+  {
+    "id": "r06",
+    "arm": "ponytail",
+    "posthoc": true,
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "test_malformed_upload_keeps_stock_unchanged_independently (__main__.PosthocCsvDiagnostics.test_malformed_upload_keeps_stock_unchanged_independently) ... ok\ntest_quoted_single_space_is_invalid_and_import_stays_unchanged (__main__.PosthocCsvDiagnostics.test_quoted_single_space_is_invalid_and_import_stays_unchanged) ... ok\ntest_unquoted_whitespace_rows_keep_existing_compatibility (__main__.PosthocCsvDiagnostics.test_unquoted_whitespace_rows_keep_existing_compatibility) ... ERROR\n\n======================================================================\nERROR: test_unquoted_whitespace_rows_keep_existing_compatibility (__main__.PosthocCsvDiagnostics.test_unquoted_whitespace_rows_keep_existing_compatibility)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<EVALUATION_ROOT>/posthoc_csv_grader.py\", line 15, in test_unquoted_whitespace_rows_keep_existing_compatibility\n    self.assertEqual(parse_inventory(text), [('apple', 2)])\n                     ~~~~~~~~~~~~~~~^^^^^^\n  File \"<EVALUATION_ROOT>/runs/r06/workspace/inventory.py\", line 16, in parse_inventory\n    raise ValueError(\"Expected two columns\")\nValueError: Expected two columns\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (errors=1)\n"
+  },
+  {
+    "id": "r13",
+    "arm": "ponytail",
+    "posthoc": true,
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "test_malformed_upload_keeps_stock_unchanged_independently (__main__.PosthocCsvDiagnostics.test_malformed_upload_keeps_stock_unchanged_independently) ... FAIL\ntest_quoted_single_space_is_invalid_and_import_stays_unchanged (__main__.PosthocCsvDiagnostics.test_quoted_single_space_is_invalid_and_import_stays_unchanged) ... FAIL\ntest_unquoted_whitespace_rows_keep_existing_compatibility (__main__.PosthocCsvDiagnostics.test_unquoted_whitespace_rows_keep_existing_compatibility) ... ok\n\n======================================================================\nFAIL: test_malformed_upload_keeps_stock_unchanged_independently (__main__.PosthocCsvDiagnostics.test_malformed_upload_keeps_stock_unchanged_independently)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<EVALUATION_ROOT>/posthoc_csv_grader.py\", line 39, in test_malformed_upload_keeps_stock_unchanged_independently\n    self.assertEqual(stock, {'old': 9})\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\nAssertionError: {'old': 9, 'apple': 2} != {'old': 9}\n- {'apple': 2, 'old': 9}\n+ {'old': 9}\n\n======================================================================\nFAIL: test_quoted_single_space_is_invalid_and_import_stays_unchanged (__main__.PosthocCsvDiagnostics.test_quoted_single_space_is_invalid_and_import_stays_unchanged)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<EVALUATION_ROOT>/posthoc_csv_grader.py\", line 24, in test_quoted_single_space_is_invalid_and_import_stays_unchanged\n    with self.assertRaises(ValueError):\n         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (failures=2)\n"
+  },
+  {
+    "id": "r14",
+    "arm": "baseline",
+    "posthoc": true,
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "test_malformed_upload_keeps_stock_unchanged_independently (__main__.PosthocCsvDiagnostics.test_malformed_upload_keeps_stock_unchanged_independently) ... FAIL\ntest_quoted_single_space_is_invalid_and_import_stays_unchanged (__main__.PosthocCsvDiagnostics.test_quoted_single_space_is_invalid_and_import_stays_unchanged) ... FAIL\ntest_unquoted_whitespace_rows_keep_existing_compatibility (__main__.PosthocCsvDiagnostics.test_unquoted_whitespace_rows_keep_existing_compatibility) ... ok\n\n======================================================================\nFAIL: test_malformed_upload_keeps_stock_unchanged_independently (__main__.PosthocCsvDiagnostics.test_malformed_upload_keeps_stock_unchanged_independently)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<EVALUATION_ROOT>/posthoc_csv_grader.py\", line 39, in test_malformed_upload_keeps_stock_unchanged_independently\n    self.assertEqual(stock, {'old': 9})\n    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^\nAssertionError: {'old': 9, 'apple': 2} != {'old': 9}\n- {'apple': 2, 'old': 9}\n+ {'old': 9}\n\n======================================================================\nFAIL: test_quoted_single_space_is_invalid_and_import_stays_unchanged (__main__.PosthocCsvDiagnostics.test_quoted_single_space_is_invalid_and_import_stays_unchanged)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<EVALUATION_ROOT>/posthoc_csv_grader.py\", line 24, in test_quoted_single_space_is_invalid_and_import_stays_unchanged\n    with self.assertRaises(ValueError):\n         ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^\nAssertionError: ValueError not raised\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (failures=2)\n"
+  },
+  {
+    "id": "r15",
+    "arm": "candidate",
+    "posthoc": true,
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "test_malformed_upload_keeps_stock_unchanged_independently (__main__.PosthocCsvDiagnostics.test_malformed_upload_keeps_stock_unchanged_independently) ... ok\ntest_quoted_single_space_is_invalid_and_import_stays_unchanged (__main__.PosthocCsvDiagnostics.test_quoted_single_space_is_invalid_and_import_stays_unchanged) ... ok\ntest_unquoted_whitespace_rows_keep_existing_compatibility (__main__.PosthocCsvDiagnostics.test_unquoted_whitespace_rows_keep_existing_compatibility) ... ERROR\n\n======================================================================\nERROR: test_unquoted_whitespace_rows_keep_existing_compatibility (__main__.PosthocCsvDiagnostics.test_unquoted_whitespace_rows_keep_existing_compatibility)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"<EVALUATION_ROOT>/posthoc_csv_grader.py\", line 15, in test_unquoted_whitespace_rows_keep_existing_compatibility\n    self.assertEqual(parse_inventory(text), [('apple', 2)])\n                     ~~~~~~~~~~~~~~~^^^^^^\n  File \"<EVALUATION_ROOT>/runs/r15/workspace/inventory.py\", line 16, in parse_inventory\n    raise ValueError(\"Expected two columns\")\nValueError: Expected two columns\n\n----------------------------------------------------------------------\nRan 3 tests in 0.001s\n\nFAILED (errors=1)\n"
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "id": "r08",
+  "case": "retry",
+  "arm": "candidate",
+  "repetition": 1,
+  "public": {
+    "command": [
+      "/Users/inkayat/.local/share/mise/installs/python/3.14/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_negative_retries_rejected_before_operation (test_retry.ExistingRetryTests.test_negative_retries_rejected_before_operation) ... ok\ntest_non_transient_error_propagates_immediately (test_retry.ExistingRetryTests.test_non_transient_error_propagates_immediately) ... ok\ntest_retry_budget_and_final_error (test_retry.ExistingRetryTests.test_retry_budget_and_final_error) ... ok\ntest_success (test_retry.ExistingRetryTests.test_success) ... ok\ntest_success_stops_retrying (test_retry.ExistingRetryTests.test_success_stops_retrying) ... ok\ntest_transient_failure (test_retry.ExistingRetryTests.test_transient_failure) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n"
+  },
+  "hidden": {
+    "command": [
+      "/Users/inkayat/.local/share/mise/installs/python/3.14/bin/python3",
+      "<EVALUATION_ROOT>/cases/retry/grader.py",
+      "<EVALUATION_ROOT>/runs/r08/workspace"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_default (__main__.Contract.test_default) ... ok\ntest_negative_before_call (__main__.Contract.test_negative_before_call) ... ok\ntest_non_transient_propagates (__main__.Contract.test_non_transient_propagates) ... ok\ntest_positive_counts (__main__.Contract.test_positive_counts) ... ok\ntest_success_stops (__main__.Contract.test_success_stops) ... ok\ntest_zero (__main__.Contract.test_zero) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.000s\n\nOK\n"
+  },
+  "all_checks_passed": true,
+  "changes": [
+    {
+      "path": "retry.py",
+      "before_sha256": "7a8b40de06b6283a3feade03ff226308abc939645697eccfdae03f94e65f7c9a",
+      "after_sha256": "74180a976c52543cb1f29065932c5718e1cb5dbb41637020c460efad7ae5d5d8",
+      "before_lines": 11,
+      "after_lines": 15
+    },
+    {
+      "path": "tests/test_retry.py",
+      "before_sha256": "e23af3992b5c963d0cc84ee90ee798ab2db124739007411ff6914b31b08a9a40",
+      "after_sha256": "4e15a36ced11c7285e0f13e1b07674807d8cbf9352bdbcf198862e5cc904a83b",
+      "before_lines": 14,
+      "after_lines": 53
+    }
+  ],
+  "unrelated_sentinel_changed": false,
+  "token_usage": null,
+  "solver_duration_ms": null
+}

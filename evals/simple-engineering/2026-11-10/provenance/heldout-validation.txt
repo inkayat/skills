@@ -1,0 +1,5 @@
+Baseline public suite: 7 tests passed.
+Baseline full grader: 22 test methods; failed as expected (2 failures, 41 errors including subtests), because format support is missing. All 7 public methods and the independent hidden default-CSV check pass.
+Temporary positive control: all 22 tests passed. The temporary modified fixture was removed; the delivered fixture remains the original unsolved baseline.
+Implementation: 83 lines, Python standard library only.
+No network, installation, commits, publishing, or real data operations were used.

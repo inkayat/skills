@@ -1,0 +1,57 @@
+{
+  "id": "r10",
+  "case": "providers",
+  "arm": "ponytail",
+  "repetition": 2,
+  "public": {
+    "command": [
+      "/Users/inkayat/.local/share/mise/installs/python/3.14/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_config_and_flag_selection (test_planner.CommandLineTests.test_config_and_flag_selection) ... ok\ntest_default (test_planner.CommandLineTests.test_default) ... ok\ntest_invalid_selection_prints_error_without_plan (test_planner.CommandLineTests.test_invalid_selection_prints_error_without_plan) ... ok\ntest_config_assistants (test_planner.ExistingPlanTests.test_config_assistants) ... ok\ntest_custom_stages (test_planner.ExistingPlanTests.test_custom_stages) ... ok\ntest_default (test_planner.ExistingPlanTests.test_default) ... ok\ntest_explicit_assistant_overrides_config (test_planner.ExistingPlanTests.test_explicit_assistant_overrides_config) ... ok\ntest_invalid_assistants (test_planner.ExistingPlanTests.test_invalid_assistants) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.235s\n\nOK\n"
+  },
+  "hidden": {
+    "command": [
+      "/Users/inkayat/.local/share/mise/installs/python/3.14/bin/python3",
+      "<EVALUATION_ROOT>/cases/providers/grader.py",
+      "<EVALUATION_ROOT>/runs/r10/workspace"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_cli_all_three (__main__.Contract.test_cli_all_three) ... ok\ntest_cli_precedence_and_output (__main__.Contract.test_cli_precedence_and_output) ... ok\ntest_cli_rejects_unknown (__main__.Contract.test_cli_rejects_unknown) ... ok\ntest_config_all_three (__main__.Contract.test_config_all_three) ... ok\ntest_config_rejects_unknown (__main__.Contract.test_config_rejects_unknown) ... ok\ntest_default_and_existing_stages (__main__.Contract.test_default_and_existing_stages) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.125s\n\nOK\n"
+  },
+  "all_checks_passed": true,
+  "changes": [
+    {
+      "path": "README.md",
+      "before_sha256": "584dc8734ffadd3974057d8ed7f0dbe452ffe5323e82c9624781d68182286f59",
+      "after_sha256": "754c1ffb916e64a7acaff976980c0b9c50d0fc9ff414361be89d7e88fb0a1edc",
+      "before_lines": 7,
+      "after_lines": 19
+    },
+    {
+      "path": "planner.py",
+      "before_sha256": "2454e35338f7b20e2358c739a0eff9509d544102523d7aa5db716a09d1dada48",
+      "after_sha256": "47088321bfed0ee1b68d10ac8e9f8134b5faf8d752ca116fc19ec6668583aae1",
+      "before_lines": 20,
+      "after_lines": 31
+    },
+    {
+      "path": "tests/test_planner.py",
+      "before_sha256": "b0330052ca13f778d2119734e90541bfb11aba34eb5712d5dc83f5e6973246b5",
+      "after_sha256": "e063c641b0e20f6f4bf05ec434f1f5774dfcc434f00eff9b70e72de167f8a2af",
+      "before_lines": 8,
+      "after_lines": 73
+    }
+  ],
+  "unrelated_sentinel_changed": false,
+  "token_usage": null,
+  "solver_duration_ms": null
+}

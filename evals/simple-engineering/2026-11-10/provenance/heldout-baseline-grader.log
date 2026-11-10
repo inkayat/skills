@@ -1,0 +1,456 @@
+test_bad_input_is_validated_before_overwriting (test_audit_export.ExistingExportTests) ... ok
+test_cli_reports_count_and_respects_fields (test_audit_export.ExistingExportTests) ... ok
+test_defaults_filter_redact_and_escape_csv (test_audit_export.ExistingExportTests) ... ok
+test_existing_output_and_source_are_protected (test_audit_export.ExistingExportTests) ... ok
+test_invalid_options_do_not_create_output (test_audit_export.ExistingExportTests) ... ok
+test_options_and_limit_after_filtering (test_audit_export.ExistingExportTests) ... ok
+test_zero_limit_still_writes_header (test_audit_export.ExistingExportTests) ... ok
+test_cli_explicit_csv_and_bad_format (__main__.HiddenBehaviorTests) ... FAIL
+test_cli_jsonl_options_and_count (__main__.HiddenBehaviorTests) ... FAIL
+test_default_csv_contract_independently (__main__.HiddenBehaviorTests) ... ok
+test_explicit_csv_preserves_formula_safety (__main__.HiddenBehaviorTests) ... ERROR
+test_invalid_formats_never_write (__main__.HiddenBehaviorTests) ... test_jsonl_cannot_overwrite_source (__main__.HiddenBehaviorTests) ... ERROR
+test_jsonl_default_privacy_types_and_round_trip (__main__.HiddenBehaviorTests) ... ERROR
+test_jsonl_does_not_apply_csv_escaping (__main__.HiddenBehaviorTests) ... ERROR
+test_jsonl_invalid_options_never_write (__main__.HiddenBehaviorTests) ... test_jsonl_invalid_source_never_writes (__main__.HiddenBehaviorTests) ... test_jsonl_limit_is_after_filtering_and_projection_is_exact (__main__.HiddenBehaviorTests) ... ERROR
+test_jsonl_no_eligible_events_is_empty (__main__.HiddenBehaviorTests) ... ERROR
+test_jsonl_overwrite_requires_opt_in (__main__.HiddenBehaviorTests) ... ERROR
+test_jsonl_selected_field_order_and_explicit_options (__main__.HiddenBehaviorTests) ... ERROR
+test_jsonl_zero_limit_is_empty (__main__.HiddenBehaviorTests) ... ERROR
+
+======================================================================
+ERROR: test_explicit_csv_preserves_formula_safety (__main__.HiddenBehaviorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 81, in test_explicit_csv_preserves_formula_safety
+    self.assertEqual(self.export(format="csv", show_actors=True), len(values))
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_invalid_formats_never_write (__main__.HiddenBehaviorTests) (format='yaml', existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 119, in test_invalid_formats_never_write
+    self.export(format=bad_format, overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_invalid_formats_never_write (__main__.HiddenBehaviorTests) (format='yaml', existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 119, in test_invalid_formats_never_write
+    self.export(format=bad_format, overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_invalid_formats_never_write (__main__.HiddenBehaviorTests) (format='JSONL', existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 119, in test_invalid_formats_never_write
+    self.export(format=bad_format, overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_invalid_formats_never_write (__main__.HiddenBehaviorTests) (format='JSONL', existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 119, in test_invalid_formats_never_write
+    self.export(format=bad_format, overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_invalid_formats_never_write (__main__.HiddenBehaviorTests) (format='', existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 119, in test_invalid_formats_never_write
+    self.export(format=bad_format, overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_invalid_formats_never_write (__main__.HiddenBehaviorTests) (format='', existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 119, in test_invalid_formats_never_write
+    self.export(format=bad_format, overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_invalid_formats_never_write (__main__.HiddenBehaviorTests) (format=None, existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 119, in test_invalid_formats_never_write
+    self.export(format=bad_format, overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_invalid_formats_never_write (__main__.HiddenBehaviorTests) (format=None, existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 119, in test_invalid_formats_never_write
+    self.export(format=bad_format, overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_cannot_overwrite_source (__main__.HiddenBehaviorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 106, in test_jsonl_cannot_overwrite_source
+    MODULE.export_events(self.source, self.source.parent / "." / self.source.name,
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_default_privacy_types_and_round_trip (__main__.HiddenBehaviorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 42, in test_jsonl_default_privacy_types_and_round_trip
+    self.assertEqual(self.export(format="jsonl"), 3)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_does_not_apply_csv_escaping (__main__.HiddenBehaviorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 74, in test_jsonl_does_not_apply_csv_escaping
+    self.export(format="jsonl", show_actors=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_options_never_write (__main__.HiddenBehaviorTests) (options={'fields': ()}, existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 136, in test_jsonl_invalid_options_never_write
+    self.export(format="jsonl", overwrite=True, **options)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_options_never_write (__main__.HiddenBehaviorTests) (options={'fields': ()}, existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 136, in test_jsonl_invalid_options_never_write
+    self.export(format="jsonl", overwrite=True, **options)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_options_never_write (__main__.HiddenBehaviorTests) (options={'fields': ('id', 'id')}, existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 136, in test_jsonl_invalid_options_never_write
+    self.export(format="jsonl", overwrite=True, **options)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_options_never_write (__main__.HiddenBehaviorTests) (options={'fields': ('id', 'id')}, existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 136, in test_jsonl_invalid_options_never_write
+    self.export(format="jsonl", overwrite=True, **options)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_options_never_write (__main__.HiddenBehaviorTests) (options={'fields': ('internal',)}, existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 136, in test_jsonl_invalid_options_never_write
+    self.export(format="jsonl", overwrite=True, **options)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_options_never_write (__main__.HiddenBehaviorTests) (options={'fields': ('internal',)}, existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 136, in test_jsonl_invalid_options_never_write
+    self.export(format="jsonl", overwrite=True, **options)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_options_never_write (__main__.HiddenBehaviorTests) (options={'limit': -1}, existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 136, in test_jsonl_invalid_options_never_write
+    self.export(format="jsonl", overwrite=True, **options)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_options_never_write (__main__.HiddenBehaviorTests) (options={'limit': -1}, existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 136, in test_jsonl_invalid_options_never_write
+    self.export(format="jsonl", overwrite=True, **options)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_options_never_write (__main__.HiddenBehaviorTests) (options={'limit': True}, existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 136, in test_jsonl_invalid_options_never_write
+    self.export(format="jsonl", overwrite=True, **options)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_options_never_write (__main__.HiddenBehaviorTests) (options={'limit': True}, existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 136, in test_jsonl_invalid_options_never_write
+    self.export(format="jsonl", overwrite=True, **options)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_options_never_write (__main__.HiddenBehaviorTests) (options={'limit': 1.5}, existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 136, in test_jsonl_invalid_options_never_write
+    self.export(format="jsonl", overwrite=True, **options)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_options_never_write (__main__.HiddenBehaviorTests) (options={'limit': 1.5}, existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 136, in test_jsonl_invalid_options_never_write
+    self.export(format="jsonl", overwrite=True, **options)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_source_never_writes (__main__.HiddenBehaviorTests) (source='not json', existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 156, in test_jsonl_invalid_source_never_writes
+    self.export(format="jsonl", overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_source_never_writes (__main__.HiddenBehaviorTests) (source='not json', existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 156, in test_jsonl_invalid_source_never_writes
+    self.export(format="jsonl", overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_source_never_writes (__main__.HiddenBehaviorTests) (source='{}', existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 156, in test_jsonl_invalid_source_never_writes
+    self.export(format="jsonl", overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_source_never_writes (__main__.HiddenBehaviorTests) (source='{}', existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 156, in test_jsonl_invalid_source_never_writes
+    self.export(format="jsonl", overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_source_never_writes (__main__.HiddenBehaviorTests) (source='[null]', existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 156, in test_jsonl_invalid_source_never_writes
+    self.export(format="jsonl", overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_source_never_writes (__main__.HiddenBehaviorTests) (source='[null]', existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 156, in test_jsonl_invalid_source_never_writes
+    self.export(format="jsonl", overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_source_never_writes (__main__.HiddenBehaviorTests) (source='[{"id": true, "actor": "a", "action": "b"}]', existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 156, in test_jsonl_invalid_source_never_writes
+    self.export(format="jsonl", overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_source_never_writes (__main__.HiddenBehaviorTests) (source='[{"id": true, "actor": "a", "action": "b"}]', existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 156, in test_jsonl_invalid_source_never_writes
+    self.export(format="jsonl", overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_source_never_writes (__main__.HiddenBehaviorTests) (source='[{"id": 1, "actor": 9, "action": "b"}]', existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 156, in test_jsonl_invalid_source_never_writes
+    self.export(format="jsonl", overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_source_never_writes (__main__.HiddenBehaviorTests) (source='[{"id": 1, "actor": 9, "action": "b"}]', existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 156, in test_jsonl_invalid_source_never_writes
+    self.export(format="jsonl", overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_source_never_writes (__main__.HiddenBehaviorTests) (source='[{"id": 1, "actor": "a", "action": "b", "internal": "yes"}]', existing=False)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 156, in test_jsonl_invalid_source_never_writes
+    self.export(format="jsonl", overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_invalid_source_never_writes (__main__.HiddenBehaviorTests) (source='[{"id": 1, "actor": "a", "action": "b", "internal": "yes"}]', existing=True)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 156, in test_jsonl_invalid_source_never_writes
+    self.export(format="jsonl", overwrite=True)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_limit_is_after_filtering_and_projection_is_exact (__main__.HiddenBehaviorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 58, in test_jsonl_limit_is_after_filtering_and_projection_is_exact
+    self.assertEqual(self.export(format="jsonl", fields=("id",), limit=1), 1)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_no_eligible_events_is_empty (__main__.HiddenBehaviorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 67, in test_jsonl_no_eligible_events_is_empty
+    self.assertEqual(self.export(format="jsonl"), 0)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_overwrite_requires_opt_in (__main__.HiddenBehaviorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 98, in test_jsonl_overwrite_requires_opt_in
+    self.export(format="jsonl")
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_selected_field_order_and_explicit_options (__main__.HiddenBehaviorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 50, in test_jsonl_selected_field_order_and_explicit_options
+    self.assertEqual(self.export(format="jsonl", fields=("action", "actor", "id"),
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+ERROR: test_jsonl_zero_limit_is_empty (__main__.HiddenBehaviorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 62, in test_jsonl_zero_limit_is_empty
+    self.assertEqual(self.export(format="jsonl", limit=0), 0)
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 28, in export
+    return MODULE.export_events(self.source, self.output, **options)
+TypeError: export_events() got an unexpected keyword argument 'format'
+
+======================================================================
+FAIL: test_cli_explicit_csv_and_bad_format (__main__.HiddenBehaviorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 177, in test_cli_explicit_csv_and_bad_format
+    self.assertEqual(result.returncode, 0, result.stderr)
+AssertionError: 2 != 0 : usage: audit_export.py [-h] [--fields FIELDS] [--include-internal]
+                       [--show-actors] [--limit LIMIT] [--overwrite]
+                       source destination
+audit_export.py: error: unrecognized arguments: --format csv
+
+
+======================================================================
+FAIL: test_cli_jsonl_options_and_count (__main__.HiddenBehaviorTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<EVALUATION_ROOT>/heldout-design/grader.py", line 165, in test_cli_jsonl_options_and_count
+    self.assertEqual(result.returncode, 0, result.stderr)
+AssertionError: 2 != 0 : usage: audit_export.py [-h] [--fields FIELDS] [--include-internal]
+                       [--show-actors] [--limit LIMIT] [--overwrite]
+                       source destination
+audit_export.py: error: unrecognized arguments: --format jsonl
+
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.088s
+
+FAILED (failures=2, errors=41)

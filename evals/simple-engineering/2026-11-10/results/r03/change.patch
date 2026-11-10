@@ -1,0 +1,130 @@
+--- before/README.md
++++ after/README.md
+@@ -1,7 +1,13 @@
+ # Workflow planner
+ 
+ Python standard library only. Run `python3 -m unittest discover -s tests -v`.
+-`python3 planner.py TASK [--config config.json]` prints a plan as JSON.
++`python3 planner.py TASK [--config config.json] [--assistant {claude,firstmate,astro}]` prints a plan as JSON.
+ Config can contain `stages`, a list included unchanged in the plan.
+-`make_plan(task, config=None)` returns the same plan for Python callers.
++It can also contain `assistant`, one of `claude`, `firstmate`, or `astro`.
++For example: `{"assistant": "firstmate", "stages": ["build", "review"]}`.
++The command-line flag overrides config; config overrides the default, `claude`.
++`python3 planner.py ship --config config.json --assistant astro` selects `astro`.
++Unsupported selections produce an error and no plan.
++`make_plan(task, config=None, assistant=None)` returns the same plan for Python callers;
++the optional `assistant` argument overrides config, and unsupported selections raise `ValueError`.
+ Planning has no execution side effects.
+--- before/planner.py
++++ after/planner.py
+@@ -1,20 +1,30 @@
+ import argparse
+ import json
+ 
+-def make_plan(task, config=None):
++ASSISTANTS = ("claude", "firstmate", "astro")
++
++def make_plan(task, config=None, assistant=None):
+     config = config or {}
+-    return {"task": task, "assistant": "claude", "stages": config.get("stages", ["build", "review"])}
++    selected = assistant if assistant is not None else config.get("assistant", "claude")
++    if selected not in ASSISTANTS:
++        raise ValueError(f"Unsupported assistant {selected!r}; choose from {', '.join(ASSISTANTS)}")
++    return {"task": task, "assistant": selected, "stages": config.get("stages", ["build", "review"])}
+ 
+ def main():
+     parser = argparse.ArgumentParser()
+     parser.add_argument("task")
+     parser.add_argument("--config")
++    parser.add_argument("--assistant", choices=ASSISTANTS)
+     args = parser.parse_args()
+     config = {}
+     if args.config:
+         with open(args.config) as stream:
+             config = json.load(stream)
+-    print(json.dumps(make_plan(args.task, config)))
++    try:
++        plan = make_plan(args.task, config, args.assistant)
++    except ValueError as error:
++        parser.error(str(error))
++    print(json.dumps(plan))
+ 
+ if __name__ == "__main__":
+     main()
+--- before/tests/test_planner.py
++++ after/tests/test_planner.py
+@@ -1,3 +1,8 @@
++import json
++from pathlib import Path
++import subprocess
++import sys
++import tempfile
+ import unittest
+ from planner import make_plan
+ 
+@@ -6,3 +11,64 @@
+         self.assertEqual(make_plan("ship"), {"task": "ship", "assistant": "claude", "stages": ["build", "review"]})
+     def test_custom_stages(self):
+         self.assertEqual(make_plan("ship", {"stages": ["test"]})["stages"], ["test"])
++
++    def test_config_assistants(self):
++        for assistant in ("claude", "firstmate", "astro"):
++            with self.subTest(assistant=assistant):
++                self.assertEqual(make_plan("ship", {"assistant": assistant, "stages": []}),
++                                 {"task": "ship", "assistant": assistant, "stages": []})
++
++    def test_override(self):
++        self.assertEqual(make_plan("ship", {"assistant": "firstmate"}, "astro")["assistant"], "astro")
++        self.assertEqual(make_plan("ship", {"assistant": "invalid"}, "claude")["assistant"], "claude")
++
++    def test_invalid_config_assistants(self):
++        for assistant in ("invalid", "", None, False, [], {}):
++            with self.subTest(assistant=assistant):
++                with self.assertRaisesRegex(ValueError, "Unsupported assistant"):
++                    make_plan("ship", {"assistant": assistant})
++
++    def test_invalid_override(self):
++        for assistant in ("invalid", ""):
++            with self.subTest(assistant=assistant):
++                with self.assertRaisesRegex(ValueError, "Unsupported assistant"):
++                    make_plan("ship", {"assistant": "claude"}, assistant)
++
++
++class CommandLineTests(unittest.TestCase):
++    def run_planner(self, *args):
++        return subprocess.run(
++            [sys.executable, str(Path(__file__).resolve().parents[1] / "planner.py"), "ship", *args],
++            capture_output=True, text=True)
++
++    def test_default_and_flags(self):
++        for assistant in (None, "claude", "firstmate", "astro"):
++            with self.subTest(assistant=assistant):
++                result = self.run_planner(*(["--assistant", assistant] if assistant else []))
++                self.assertEqual(result.returncode, 0, result.stderr)
++                self.assertEqual(json.loads(result.stdout),
++                                 {"task": "ship", "assistant": assistant or "claude", "stages": ["build", "review"]})
++
++    def test_config_and_override(self):
++        with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parent) as directory:
++            config = Path(directory) / "config.json"
++            config.write_text(json.dumps({"assistant": "firstmate", "stages": ["test"]}))
++            for flags, expected in (([], "firstmate"), (["--assistant", "astro"], "astro")):
++                with self.subTest(flags=flags):
++                    result = self.run_planner("--config", str(config), *flags)
++                    self.assertEqual(result.returncode, 0, result.stderr)
++                    self.assertEqual(json.loads(result.stdout),
++                                     {"task": "ship", "assistant": expected, "stages": ["test"]})
++
++    def test_invalid_selection(self):
++        with tempfile.TemporaryDirectory(dir=Path(__file__).resolve().parent) as directory:
++            config = Path(directory) / "config.json"
++            config.write_text('{"assistant": "invalid"}')
++            for flags in (("--assistant", "invalid"), ("--config", str(config))):
++                with self.subTest(flags=flags):
++                    result = self.run_planner(*flags)
++                    self.assertEqual(result.returncode, 2)
++                    self.assertEqual(result.stdout, "")
++                    self.assertIn("assistant", result.stderr)
++                    self.assertIn("invalid", result.stderr)
++                    self.assertNotIn("Traceback", result.stderr)

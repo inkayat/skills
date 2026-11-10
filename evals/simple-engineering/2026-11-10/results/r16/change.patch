@@ -1,0 +1,68 @@
+--- before/README.md
++++ after/README.md
+@@ -3,4 +3,6 @@
+ Python standard library only. Run `python3 -m unittest discover -s tests -v`.
+ `fetch_with_retry(operation, retries=None)` retries TemporaryError only.
+ The default is an initial call followed by at most three retries.
++`None` uses the default; non-negative integers specify the retry count, including
++zero to disable retries. Negative values raise `ValueError` before the operation runs.
+ Successful results return immediately. Non-transient errors propagate immediately.
+--- before/retry.py
++++ after/retry.py
+@@ -2,7 +2,11 @@
+     pass
+ 
+ def fetch_with_retry(operation, retries=None):
+-    attempts = (retries or 3) + 1
++    if retries is None:
++        retries = 3
++    if retries < 0:
++        raise ValueError("retries must be non-negative")
++    attempts = retries + 1
+     for attempt in range(attempts):
+         try:
+             return operation()
+--- before/tests/test_retry.py
++++ after/tests/test_retry.py
+@@ -1,4 +1,5 @@
+ import unittest
++from unittest.mock import Mock
+ from retry import TemporaryError, fetch_with_retry
+ 
+ class ExistingRetryTests(unittest.TestCase):
+@@ -12,3 +13,35 @@
+                 raise value
+             return value
+         self.assertEqual(fetch_with_retry(operation, retries=1), "done")
++
++    def test_retry_count_and_final_error(self):
++        for retries, calls in [(None, 4), (0, 1), (1, 2), (5, 6)]:
++            with self.subTest(retries=retries):
++                errors = [TemporaryError(str(i)) for i in range(calls)]
++                operation = Mock(side_effect=errors)
++                with self.assertRaises(TemporaryError) as raised:
++                    fetch_with_retry(operation, retries=retries)
++                self.assertEqual(operation.call_count, calls)
++                self.assertIs(raised.exception, errors[-1])
++
++    def test_omitted_retries_uses_default(self):
++        operation = Mock(side_effect=TemporaryError("later"))
++        with self.assertRaises(TemporaryError):
++            fetch_with_retry(operation)
++        self.assertEqual(operation.call_count, 4)
++
++    def test_negative_retries_rejected_before_operation(self):
++        for retries in [-1, -5]:
++            with self.subTest(retries=retries):
++                operation = Mock()
++                with self.assertRaises(ValueError):
++                    fetch_with_retry(operation, retries=retries)
++                operation.assert_not_called()
++
++    def test_other_errors_propagate_without_retry(self):
++        error = RuntimeError("permanent")
++        operation = Mock(side_effect=error)
++        with self.assertRaises(RuntimeError) as raised:
++            fetch_with_retry(operation)
++        operation.assert_called_once_with()
++        self.assertIs(raised.exception, error)

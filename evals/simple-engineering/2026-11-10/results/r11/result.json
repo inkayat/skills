@@ -1,0 +1,57 @@
+{
+  "id": "r11",
+  "case": "providers",
+  "arm": "baseline",
+  "repetition": 2,
+  "public": {
+    "command": [
+      "/Users/inkayat/.local/share/mise/installs/python/3.14/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_config_and_flag_precedence (test_planner.CommandLineTests.test_config_and_flag_precedence) ... ok\ntest_default_and_all_flags (test_planner.CommandLineTests.test_default_and_all_flags) ... ok\ntest_invalid_config (test_planner.CommandLineTests.test_invalid_config) ... ok\ntest_invalid_flag (test_planner.CommandLineTests.test_invalid_flag) ... ok\ntest_config_assistants (test_planner.ExistingPlanTests.test_config_assistants) ... ok\ntest_custom_stages (test_planner.ExistingPlanTests.test_custom_stages) ... ok\ntest_default (test_planner.ExistingPlanTests.test_default) ... ok\ntest_invalid_config_selection (test_planner.ExistingPlanTests.test_invalid_config_selection) ... ok\ntest_invalid_override_does_not_fall_back (test_planner.ExistingPlanTests.test_invalid_override_does_not_fall_back) ... ok\ntest_override (test_planner.ExistingPlanTests.test_override) ... ok\n\n----------------------------------------------------------------------\nRan 10 tests in 0.165s\n\nOK\n"
+  },
+  "hidden": {
+    "command": [
+      "/Users/inkayat/.local/share/mise/installs/python/3.14/bin/python3",
+      "<EVALUATION_ROOT>/cases/providers/grader.py",
+      "<EVALUATION_ROOT>/runs/r11/workspace"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_cli_all_three (__main__.Contract.test_cli_all_three) ... ok\ntest_cli_precedence_and_output (__main__.Contract.test_cli_precedence_and_output) ... ok\ntest_cli_rejects_unknown (__main__.Contract.test_cli_rejects_unknown) ... ok\ntest_config_all_three (__main__.Contract.test_config_all_three) ... ok\ntest_config_rejects_unknown (__main__.Contract.test_config_rejects_unknown) ... ok\ntest_default_and_existing_stages (__main__.Contract.test_default_and_existing_stages) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.126s\n\nOK\n"
+  },
+  "all_checks_passed": true,
+  "changes": [
+    {
+      "path": "README.md",
+      "before_sha256": "584dc8734ffadd3974057d8ed7f0dbe452ffe5323e82c9624781d68182286f59",
+      "after_sha256": "7ae5506a01bc6cb3558757f1d89dbaad9107a5cd506bdf1cfd08e0683a5d5a01",
+      "before_lines": 7,
+      "after_lines": 14
+    },
+    {
+      "path": "planner.py",
+      "before_sha256": "2454e35338f7b20e2358c739a0eff9509d544102523d7aa5db716a09d1dada48",
+      "after_sha256": "e90a019d54993549d269b7d61a727773046e67125ba8633e68b54cc44a445931",
+      "before_lines": 20,
+      "after_lines": 30
+    },
+    {
+      "path": "tests/test_planner.py",
+      "before_sha256": "b0330052ca13f778d2119734e90541bfb11aba34eb5712d5dc83f5e6973246b5",
+      "after_sha256": "e4416c500647455af44aa21bdfc52eb3bc37515bda0e17d5591c2730ff993731",
+      "before_lines": 8,
+      "after_lines": 77
+    }
+  ],
+  "unrelated_sentinel_changed": false,
+  "token_usage": null,
+  "solver_duration_ms": null
+}

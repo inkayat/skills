@@ -1,0 +1,155 @@
+--- before/audit_export.py
++++ after/audit_export.py
+@@ -31,8 +31,10 @@
+ 
+ 
+ def export_events(source, destination, *, fields=FIELDS, include_internal=False,
+-                  show_actors=False, limit=None, overwrite=False):
+-    """Write CSV and return the number of exported events."""
++                  show_actors=False, limit=None, overwrite=False, format="csv"):
++    """Write CSV or JSON Lines and return the number of exported events."""
++    if format not in ("csv", "jsonl"):
++        raise ValueError("format must be csv or jsonl")
+     fields = tuple(fields)
+     if not fields or len(set(fields)) != len(fields) or any(f not in FIELDS for f in fields):
+         raise ValueError("fields must be distinct names from id, actor, action")
+@@ -53,9 +55,13 @@
+             row["actor"] = "[redacted]"
+         rows.append(row)
+     with destination.open("w" if overwrite else "x", encoding="utf-8", newline="") as stream:
+-        writer = csv.DictWriter(stream, fieldnames=fields)
+-        writer.writeheader()
+-        writer.writerows({key: _csv_cell(value) for key, value in row.items()} for row in rows)
++        if format == "jsonl":
++            for row in rows:
++                stream.write(json.dumps(row) + "\n")
++        else:
++            writer = csv.DictWriter(stream, fieldnames=fields)
++            writer.writeheader()
++            writer.writerows({key: _csv_cell(value) for key, value in row.items()} for row in rows)
+     return len(rows)
+ 
+ 
+@@ -63,6 +69,7 @@
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument("source")
+     parser.add_argument("destination")
++    parser.add_argument("--format", choices=("csv", "jsonl"), default="csv")
+     parser.add_argument("--fields", default=",".join(FIELDS))
+     parser.add_argument("--include-internal", action="store_true")
+     parser.add_argument("--show-actors", action="store_true")
+@@ -72,7 +79,7 @@
+     try:
+         count = export_events(args.source, args.destination, fields=args.fields.split(","),
+                               include_internal=args.include_internal, show_actors=args.show_actors,
+-                              limit=args.limit, overwrite=args.overwrite)
++                              limit=args.limit, overwrite=args.overwrite, format=args.format)
+     except (ValueError, OSError) as error:
+         parser.exit(2, f"error: {error}\n")
+     print(f"Exported {count} events")
+--- before/test_audit_export.py
++++ after/test_audit_export.py
+@@ -75,6 +75,103 @@
+         self.assertEqual(result.stdout, "Exported 1 events\n")
+         self.assertEqual(list(self.read_rows()[0]), ["action", "id"])
+ 
++    def test_jsonl_defaults_filter_redact_and_preserve_types(self):
++        self.assertEqual(export_events(self.source, self.output, format="jsonl"), 2)
++        text = self.output.read_text(encoding="utf-8")
++        self.assertTrue(text.endswith("\n"))
++        rows = [json.loads(line) for line in text.splitlines()]
++        self.assertEqual(rows, [
++            {"id": 2, "actor": "[redacted]", "action": "=SUM(1,2)"},
++            {"id": 3, "actor": "[redacted]", "action": "café, opened"},
++        ])
++        self.assertEqual(list(rows[0]), ["id", "actor", "action"])
++        self.assertIs(type(rows[0]["id"]), int)
++
++    def test_jsonl_fields_limits_and_special_strings(self):
++        self.events[1]["actor"] = '+"café 😀"\nnext\rline'
++        self.events[1]["action"] = '@"quoted"\nnext\rline'
++        self.source.write_text(json.dumps(self.events), encoding="utf-8")
++        self.assertEqual(export_events(self.source, self.output, format="jsonl",
++                                      fields=("action", "actor", "id"),
++                                      show_actors=True, limit=1), 1)
++        lines = self.output.read_text(encoding="utf-8").splitlines()
++        self.assertEqual(len(lines), 1)
++        row = json.loads(lines[0])
++        self.assertEqual(list(row), ["action", "actor", "id"])
++        self.assertEqual(row, self.events[1])
++        self.assertEqual(export_events(self.source, self.output, format="jsonl",
++                                      fields=("id",), include_internal=True,
++                                      overwrite=True, limit=1), 1)
++        self.assertEqual(json.loads(self.output.read_text()), {"id": 1})
++
++    def test_jsonl_empty_exports_have_no_header(self):
++        for options in ({"limit": 0}, {}):
++            if not options:
++                self.source.write_text("[]", encoding="utf-8")
++            with self.subTest(options=options):
++                self.assertEqual(export_events(self.source, self.output, format="jsonl",
++                                              overwrite=True, **options), 0)
++                self.assertEqual(self.output.read_bytes(), b"")
++
++    def test_jsonl_protects_destination_and_source(self):
++        self.output.write_text("keep me", encoding="utf-8")
++        with self.assertRaises(FileExistsError):
++            export_events(self.source, self.output, format="jsonl")
++        self.assertEqual(self.output.read_text(), "keep me")
++        before = self.source.read_bytes()
++        with self.assertRaises(ValueError):
++            export_events(self.source, self.source, format="jsonl", overwrite=True)
++        self.assertEqual(self.source.read_bytes(), before)
++
++    def test_validation_preserves_existing_or_absent_destination_in_both_formats(self):
++        for format in ("csv", "jsonl"):
++            for exists in (False, True):
++                for options in ({"fields": ()}, {"fields": ("id", "id")},
++                                {"fields": ("internal",)}, {"limit": -1},
++                                {"limit": True}, {"format": "xml"}, {"format": None}):
++                    with self.subTest(format=format, exists=exists, options=options):
++                        self.output.unlink(missing_ok=True)
++                        if exists:
++                            self.output.write_text("keep me", encoding="utf-8")
++                        kwargs = {"format": format, "overwrite": True, **options}
++                        with self.assertRaises(ValueError):
++                            export_events(self.source, self.output, **kwargs)
++                        if exists:
++                            self.assertEqual(self.output.read_text(), "keep me")
++                        else:
++                            self.assertFalse(self.output.exists())
++
++    def test_jsonl_validates_all_input_even_beyond_limit(self):
++        self.events.append({"id": True, "actor": "x", "action": "y"})
++        self.source.write_text(json.dumps(self.events), encoding="utf-8")
++        for exists in (False, True):
++            with self.subTest(exists=exists):
++                if exists:
++                    self.output.write_text("keep me", encoding="utf-8")
++                with self.assertRaises(ValueError):
++                    export_events(self.source, self.output, format="jsonl",
++                                  overwrite=True, limit=0)
++                if exists:
++                    self.assertEqual(self.output.read_text(), "keep me")
++                else:
++                    self.assertFalse(self.output.exists())
++
++    def test_cli_jsonl_and_invalid_format(self):
++        command = [sys.executable, str(Path(__file__).with_name("audit_export.py")),
++                   str(self.source), str(self.output)]
++        result = subprocess.run(command + ["--format", "jsonl", "--fields", "action,id",
++                                           "--limit", "1"], capture_output=True, text=True)
++        self.assertEqual(result.returncode, 0, result.stderr)
++        self.assertEqual(result.stdout, "Exported 1 events\n")
++        row = json.loads(self.output.read_text())
++        self.assertEqual(list(row), ["action", "id"])
++        self.assertEqual(row, {"action": "=SUM(1,2)", "id": 2})
++        before = self.output.read_bytes()
++        result = subprocess.run(command + ["--format", "xml", "--overwrite"],
++                                capture_output=True, text=True)
++        self.assertEqual(result.returncode, 2)
++        self.assertEqual(self.output.read_bytes(), before)
++
+ 
+ if __name__ == "__main__":
+     unittest.main()

@@ -1,6 +1,6 @@
 # simple-engineering 0.1.0 — verification
 
-Date: 2026-11-10. Scope: first discussion draft, not production acceptance.
+Date: 2026-11-10. Scope: initial discussion-draft checks, not production acceptance. The later [comparative evaluation](simple-engineering-evaluation.md) records 21 actual agent runs, independent review, and additional failures found after the initial tests.
 
 ## Observed results
 
@@ -27,7 +27,7 @@ To repeat source integrity verification, fetch the exact revision/path links in 
 ## Limits
 
 - Scenario walkthroughs are author review, not independent behavioral trials and not ten passing model tests.
-- No comparison against an unassisted baseline or the original skills was run. Expected benefits remain hypotheses.
+- No comparison against a baseline or the original skills had been run at initial drafting. The subsequent comparative report now contains that experiment; it did not establish reliable incremental benefit. Expected benefits remain hypotheses.
 - Native discovery and invocation in Claude, Firstmate, and Astro have not been tested. The method contains no host-specific runtime dependency, but that does not prove host integration.
 - No application code, automated delivery pipeline, installation, or activation is included.
 - No repository CI workflow exists at the inspected base revision. Local validation must not be described as a green CI run.

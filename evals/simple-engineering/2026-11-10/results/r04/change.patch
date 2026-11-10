@@ -1,0 +1,86 @@
+--- before/inventory.py
++++ after/inventory.py
+@@ -1,14 +1,23 @@
++import csv
++from io import StringIO
++
++
+ def parse_inventory(text):
+-    lines = [line for line in text.splitlines() if line.strip()]
+-    if not lines or lines[0] != "name,quantity":
++    stream = StringIO(text, newline="")
++    header = next((line for line in stream if line.strip()), "")
++    if header.rstrip("\r\n") != "name,quantity":
+         raise ValueError("Expected name,quantity header")
+     result = []
+-    for line in lines[1:]:
+-        fields = line.split(",")
+-        if len(fields) != 2:
+-            raise ValueError("Expected two columns")
+-        name, raw = fields
+-        if not name.strip() or not raw.isascii() or not raw.isdigit():
+-            raise ValueError("Expected a name and non-negative whole quantity")
+-        result.append((name, int(raw)))
++    try:
++        for fields in csv.reader(stream, strict=True):
++            if not fields or (len(fields) == 1 and not fields[0].strip()):
++                continue
++            if len(fields) != 2:
++                raise ValueError("Expected two columns")
++            name, raw = fields
++            if not name.strip() or not raw.isascii() or not raw.isdigit():
++                raise ValueError("Expected a name and non-negative whole quantity")
++            result.append((name, int(raw)))
++    except csv.Error as exc:
++        raise ValueError("Invalid CSV") from exc
+     return result
+--- before/tests/test_inventory.py
++++ after/tests/test_inventory.py
+@@ -13,3 +13,47 @@
+     def test_invalid_quantity(self):
+         with self.assertRaises(ValueError):
+             parse_inventory("name,quantity\napple,-2\n")
++
++class CsvRegressionTests(unittest.TestCase):
++    def test_quoted_names_in_preview_and_import(self):
++        text = ('name,quantity\r\n\r\n"red, apple",2\r\n'
++                '" line one\r\n\r\nline two ",3\r\n'
++                '"a ""quoted"" name",4\r\n"red, apple",5\r\n')
++        rows = [("red, apple", 2), (" line one\r\n\r\nline two ", 3),
++                ('a "quoted" name', 4), ("red, apple", 5)]
++        self.assertEqual(parse_inventory(text), rows)
++        self.assertEqual(preview_inventory(text), {"rows": 4, "units": 14})
++        stock = {"red, apple": 1, "pear": 2}
++        self.assertEqual(import_inventory(text, stock), 4)
++        self.assertEqual(stock, {"red, apple": 8, "pear": 2,
++                                 " line one\r\n\r\nline two ": 3,
++                                 'a "quoted" name': 4})
++
++    def test_lf_and_name_whitespace_are_preserved(self):
++        self.assertEqual(parse_inventory('name,quantity\n" a\nb ",0\n'),
++                         [(" a\nb ", 0)])
++
++    def test_blank_rows_and_header_only(self):
++        self.assertEqual(parse_inventory("\n  \nname,quantity\n\n  \n"), [])
++        self.assertEqual(preview_inventory("name,quantity\n"), {"rows": 0, "units": 0})
++
++    def test_invalid_rows_reject_preview_and_leave_stock_unchanged(self):
++        invalid_rows = ['"unterminated,2\n', '"apple"extra,2\n',
++                        'apple,2,3\n', 'apple\n', '" \n ",2\n',
++                        'apple,-2\n', 'apple,+2\n', 'apple, 2\n',
++                        'apple,2 \n', 'apple,٢\n', 'apple,2.0\n', 'apple,\n']
++        for invalid in invalid_rows:
++            with self.subTest(row=invalid):
++                text = 'name,quantity\n"red, apple",2\n' + invalid
++                with self.assertRaises(ValueError):
++                    preview_inventory(text)
++                stock = {"red, apple": 7, "pear": 1}
++                with self.assertRaises(ValueError):
++                    import_inventory(text, stock)
++                self.assertEqual(stock, {"red, apple": 7, "pear": 1})
++
++    def test_header_is_required_and_exact(self):
++        for text in ['', 'name,quantity \napple,2\n',
++                     'quantity,name\n2,apple\n', '"name",quantity\napple,2\n']:
++            with self.subTest(text=text), self.assertRaises(ValueError):
++                parse_inventory(text)

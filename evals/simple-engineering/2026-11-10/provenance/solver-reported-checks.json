@@ -1,0 +1,191 @@
+[
+  {
+    "id": "r01",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 9,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": null,
+    "reported_pre_fix_failure": null,
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r02",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 10,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": 2,
+    "reported_pre_fix_failure": null,
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r03",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 9,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": null,
+    "reported_pre_fix_failure": null,
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r04",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 8,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": 3,
+    "reported_pre_fix_failure": "New regressions reported two failures.",
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r05",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 8,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": null,
+    "reported_pre_fix_failure": "New regressions reported two failures and two errors.",
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r06",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 8,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": null,
+    "reported_pre_fix_failure": "New regressions reported four failures/errors.",
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r07",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 6,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": null,
+    "reported_pre_fix_failure": "Zero-count and negative-value failures reported.",
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r08",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 6,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": null,
+    "reported_pre_fix_failure": "Zero-count and negative-value failures reported.",
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r09",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 6,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": null,
+    "reported_pre_fix_failure": "Regression failures reported before fix.",
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r10",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 8,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": null,
+    "reported_pre_fix_failure": null,
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r11",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 10,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": null,
+    "reported_pre_fix_failure": null,
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r12",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 12,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": 2,
+    "reported_pre_fix_failure": null,
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r13",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 8,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": 3,
+    "reported_pre_fix_failure": "New regressions reported two failures.",
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r14",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 7,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": 3,
+    "reported_pre_fix_failure": "New regressions reported two failures.",
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r15",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 7,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": 3,
+    "reported_pre_fix_failure": "Standalone Python reproduction reported both quoted-field failures.",
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r16",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 6,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": null,
+    "reported_pre_fix_failure": "Zero-count and negative-value failures reported.",
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r17",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 5,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": null,
+    "reported_pre_fix_failure": "Zero-count and negative-value failures reported.",
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r18",
+    "reported_final_command": "python3 -m unittest discover -s tests -v",
+    "reported_final_test_count": 7,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": null,
+    "reported_pre_fix_failure": "Zero-count and negative-value failures reported.",
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r19",
+    "reported_final_command": "python3 -m unittest -v",
+    "reported_final_test_count": 15,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": 7,
+    "reported_pre_fix_failure": null,
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r20",
+    "reported_final_command": "python3 -m unittest -v",
+    "reported_final_test_count": 14,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": 7,
+    "reported_pre_fix_failure": null,
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  },
+  {
+    "id": "r21",
+    "reported_final_command": "python3 -m unittest -v",
+    "reported_final_test_count": 15,
+    "reported_final_outcome": "passed",
+    "reported_initial_test_count": 7,
+    "reported_pre_fix_failure": null,
+    "evidence_class": "Summary transcribed from solver completion message; not a complete tool transcript. Actual evaluator commands/results are separately recorded."
+  }
+]

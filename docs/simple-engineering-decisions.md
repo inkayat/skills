@@ -3,7 +3,7 @@
 Status: discussion draft, 2026-11-10. Target repository: `inkayat/skills`.
 This record does not inherit admission rules or acceptance claims from the deleted `inkayat/tolga-skills` repository.
 
-The intended benefit is fewer unnecessary changes without losing required behavior. That is a design hypothesis, not a measured improvement over a model without the skill.
+The intended benefit is fewer unnecessary changes without losing required behavior. That remains a design hypothesis: the subsequent [comparative evaluation](simple-engineering-evaluation.md) did not demonstrate reliable incremental benefit.
 
 ## What was selected and why
 
@@ -62,4 +62,4 @@ The safeguard-removal rule is deliberately conditional: unconditional preservati
 
 See [verification](simple-engineering-verification.md) for commands and observed outcomes. Source-content checks establish provenance; format checks establish package shape; manual scenarios establish only the author's interpretation.
 
-No comparative model experiment, independent reviewer evaluation, or native Claude/Firstmate/Astro invocation has been run. No performance, token savings, or defect-reduction percentage is claimed. Before calling the skill proven, compare it against the same host/model without the skill on real tasks, with predeclared requirements and observable outcome checks, and inspect both helpful and harmful changes.
+At initial drafting, no comparative model experiment, independent reviewer evaluation, or native Claude/Firstmate/Astro invocation had been run. A subsequent [21-run comparison with blind review](simple-engineering-evaluation.md) now supplies behavioral evidence, including failures missed by the initial grader. The method itself is unchanged. Native host integration remains untested; no performance, token savings, defect-reduction percentage, or proven incremental benefit is claimed.

@@ -1,0 +1,59 @@
+--- before/retry.py
++++ after/retry.py
+@@ -2,7 +2,11 @@
+     pass
+ 
+ def fetch_with_retry(operation, retries=None):
+-    attempts = (retries or 3) + 1
++    if retries is None:
++        retries = 3
++    if retries < 0:
++        raise ValueError("retries must be non-negative")
++    attempts = retries + 1
+     for attempt in range(attempts):
+         try:
+             return operation()
+--- before/tests/test_retry.py
++++ after/tests/test_retry.py
+@@ -12,3 +12,41 @@
+                 raise value
+             return value
+         self.assertEqual(fetch_with_retry(operation, retries=1), "done")
++
++
++class RetryConfigurationTests(unittest.TestCase):
++    def test_retry_counts_and_final_error(self):
++        for retries, expected_calls in [(0, 1), (None, 4), (1, 2), (5, 6)]:
++            with self.subTest(retries=retries):
++                calls = []
++
++                def operation():
++                    error = TemporaryError(str(len(calls)))
++                    calls.append(error)
++                    raise error
++
++                with self.assertRaises(TemporaryError) as caught:
++                    fetch_with_retry(operation, retries=retries)
++                self.assertEqual(len(calls), expected_calls)
++                self.assertIs(caught.exception, calls[-1])
++
++    def test_negative_retries_rejected_before_operation(self):
++        for retries in [-1, -5]:
++            with self.subTest(retries=retries):
++                calls = []
++                with self.assertRaises(ValueError):
++                    fetch_with_retry(lambda: calls.append(True), retries=retries)
++                self.assertEqual(calls, [])
++
++    def test_non_transient_error_is_not_retried(self):
++        calls = []
++        error = RuntimeError("permanent")
++
++        def operation():
++            calls.append(True)
++            raise error
++
++        with self.assertRaises(RuntimeError) as caught:
++            fetch_with_retry(operation)
++        self.assertEqual(len(calls), 1)
++        self.assertIs(caught.exception, error)

@@ -1,0 +1,143 @@
+[
+  {
+    "id": "initial_fixture",
+    "observations": [
+      {
+        "input": "name,quantity\n   \na,2\n",
+        "result": [
+          [
+            "a",
+            2
+          ]
+        ]
+      },
+      {
+        "input": "name,quantity\n\" \"\na,2\n",
+        "error": "ValueError",
+        "message": "Expected two columns"
+      }
+    ]
+  },
+  {
+    "id": "r04",
+    "observations": [
+      {
+        "input": "name,quantity\n   \na,2\n",
+        "result": [
+          [
+            "a",
+            2
+          ]
+        ]
+      },
+      {
+        "input": "name,quantity\n\" \"\na,2\n",
+        "result": [
+          [
+            "a",
+            2
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r05",
+    "observations": [
+      {
+        "input": "name,quantity\n   \na,2\n",
+        "result": [
+          [
+            "a",
+            2
+          ]
+        ]
+      },
+      {
+        "input": "name,quantity\n\" \"\na,2\n",
+        "result": [
+          [
+            "a",
+            2
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r06",
+    "observations": [
+      {
+        "input": "name,quantity\n   \na,2\n",
+        "error": "ValueError",
+        "message": "Expected two columns"
+      },
+      {
+        "input": "name,quantity\n\" \"\na,2\n",
+        "error": "ValueError",
+        "message": "Expected two columns"
+      }
+    ]
+  },
+  {
+    "id": "r13",
+    "observations": [
+      {
+        "input": "name,quantity\n   \na,2\n",
+        "result": [
+          [
+            "a",
+            2
+          ]
+        ]
+      },
+      {
+        "input": "name,quantity\n\" \"\na,2\n",
+        "result": [
+          [
+            "a",
+            2
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r14",
+    "observations": [
+      {
+        "input": "name,quantity\n   \na,2\n",
+        "result": [
+          [
+            "a",
+            2
+          ]
+        ]
+      },
+      {
+        "input": "name,quantity\n\" \"\na,2\n",
+        "result": [
+          [
+            "a",
+            2
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "id": "r15",
+    "observations": [
+      {
+        "input": "name,quantity\n   \na,2\n",
+        "error": "ValueError",
+        "message": "Expected two columns"
+      },
+      {
+        "input": "name,quantity\n\" \"\na,2\n",
+        "error": "ValueError",
+        "message": "Expected two columns"
+      }
+    ]
+  }
+]

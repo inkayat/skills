@@ -1,0 +1,47 @@
+{
+  "id": "r19",
+  "case": "heldout",
+  "arm": "candidate",
+  "repetition": 1,
+  "public": {
+    "command": [
+      "/Users/inkayat/.local/share/mise/installs/python/3.14/bin/python3",
+      "-m",
+      "unittest",
+      "-v"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_bad_input_is_validated_before_overwriting (test_audit_export.ExistingExportTests.test_bad_input_is_validated_before_overwriting) ... ok\ntest_cli_formats_and_invalid_format (test_audit_export.ExistingExportTests.test_cli_formats_and_invalid_format) ... ok\ntest_cli_reports_count_and_respects_fields (test_audit_export.ExistingExportTests.test_cli_reports_count_and_respects_fields) ... ok\ntest_defaults_filter_redact_and_escape_csv (test_audit_export.ExistingExportTests.test_defaults_filter_redact_and_escape_csv) ... ok\ntest_existing_output_and_source_are_protected (test_audit_export.ExistingExportTests.test_existing_output_and_source_are_protected) ... ok\ntest_invalid_format_does_not_create_or_overwrite (test_audit_export.ExistingExportTests.test_invalid_format_does_not_create_or_overwrite) ... ok\ntest_invalid_options_do_not_create_output (test_audit_export.ExistingExportTests.test_invalid_options_do_not_create_output) ... ok\ntest_jsonl_defaults_filter_redact_and_preserve_types (test_audit_export.ExistingExportTests.test_jsonl_defaults_filter_redact_and_preserve_types) ... ok\ntest_jsonl_options_and_overwrite (test_audit_export.ExistingExportTests.test_jsonl_options_and_overwrite) ... ok\ntest_jsonl_protects_existing_destination_and_source (test_audit_export.ExistingExportTests.test_jsonl_protects_existing_destination_and_source) ... ok\ntest_jsonl_round_trips_strings_and_selected_order (test_audit_export.ExistingExportTests.test_jsonl_round_trips_strings_and_selected_order) ... ok\ntest_jsonl_zero_events_is_empty (test_audit_export.ExistingExportTests.test_jsonl_zero_events_is_empty) ... ok\ntest_options_and_limit_after_filtering (test_audit_export.ExistingExportTests.test_options_and_limit_after_filtering) ... ok\ntest_validation_preserves_destination_in_both_formats (test_audit_export.ExistingExportTests.test_validation_preserves_destination_in_both_formats) ... ok\ntest_zero_limit_still_writes_header (test_audit_export.ExistingExportTests.test_zero_limit_still_writes_header) ... ok\n\n----------------------------------------------------------------------\nRan 15 tests in 0.140s\n\nOK\n"
+  },
+  "hidden": {
+    "command": [
+      "/Users/inkayat/.local/share/mise/installs/python/3.14/bin/python3",
+      "<EVALUATION_ROOT>/heldout-design/grader.py",
+      "<EVALUATION_ROOT>/runs/r19/workspace"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_bad_input_is_validated_before_overwriting (test_audit_export.ExistingExportTests.test_bad_input_is_validated_before_overwriting) ... ok\ntest_cli_formats_and_invalid_format (test_audit_export.ExistingExportTests.test_cli_formats_and_invalid_format) ... ok\ntest_cli_reports_count_and_respects_fields (test_audit_export.ExistingExportTests.test_cli_reports_count_and_respects_fields) ... ok\ntest_defaults_filter_redact_and_escape_csv (test_audit_export.ExistingExportTests.test_defaults_filter_redact_and_escape_csv) ... ok\ntest_existing_output_and_source_are_protected (test_audit_export.ExistingExportTests.test_existing_output_and_source_are_protected) ... ok\ntest_invalid_format_does_not_create_or_overwrite (test_audit_export.ExistingExportTests.test_invalid_format_does_not_create_or_overwrite) ... ok\ntest_invalid_options_do_not_create_output (test_audit_export.ExistingExportTests.test_invalid_options_do_not_create_output) ... ok\ntest_jsonl_defaults_filter_redact_and_preserve_types (test_audit_export.ExistingExportTests.test_jsonl_defaults_filter_redact_and_preserve_types) ... ok\ntest_jsonl_options_and_overwrite (test_audit_export.ExistingExportTests.test_jsonl_options_and_overwrite) ... ok\ntest_jsonl_protects_existing_destination_and_source (test_audit_export.ExistingExportTests.test_jsonl_protects_existing_destination_and_source) ... ok\ntest_jsonl_round_trips_strings_and_selected_order (test_audit_export.ExistingExportTests.test_jsonl_round_trips_strings_and_selected_order) ... ok\ntest_jsonl_zero_events_is_empty (test_audit_export.ExistingExportTests.test_jsonl_zero_events_is_empty) ... ok\ntest_options_and_limit_after_filtering (test_audit_export.ExistingExportTests.test_options_and_limit_after_filtering) ... ok\ntest_validation_preserves_destination_in_both_formats (test_audit_export.ExistingExportTests.test_validation_preserves_destination_in_both_formats) ... ok\ntest_zero_limit_still_writes_header (test_audit_export.ExistingExportTests.test_zero_limit_still_writes_header) ... ok\ntest_cli_explicit_csv_and_bad_format (__main__.HiddenBehaviorTests.test_cli_explicit_csv_and_bad_format) ... ok\ntest_cli_jsonl_options_and_count (__main__.HiddenBehaviorTests.test_cli_jsonl_options_and_count) ... ok\ntest_default_csv_contract_independently (__main__.HiddenBehaviorTests.test_default_csv_contract_independently) ... ok\ntest_explicit_csv_preserves_formula_safety (__main__.HiddenBehaviorTests.test_explicit_csv_preserves_formula_safety) ... ok\ntest_invalid_formats_never_write (__main__.HiddenBehaviorTests.test_invalid_formats_never_write) ... ok\ntest_jsonl_cannot_overwrite_source (__main__.HiddenBehaviorTests.test_jsonl_cannot_overwrite_source) ... ok\ntest_jsonl_default_privacy_types_and_round_trip (__main__.HiddenBehaviorTests.test_jsonl_default_privacy_types_and_round_trip) ... ok\ntest_jsonl_does_not_apply_csv_escaping (__main__.HiddenBehaviorTests.test_jsonl_does_not_apply_csv_escaping) ... ok\ntest_jsonl_invalid_options_never_write (__main__.HiddenBehaviorTests.test_jsonl_invalid_options_never_write) ... ok\ntest_jsonl_invalid_source_never_writes (__main__.HiddenBehaviorTests.test_jsonl_invalid_source_never_writes) ... ok\ntest_jsonl_limit_is_after_filtering_and_projection_is_exact (__main__.HiddenBehaviorTests.test_jsonl_limit_is_after_filtering_and_projection_is_exact) ... ok\ntest_jsonl_no_eligible_events_is_empty (__main__.HiddenBehaviorTests.test_jsonl_no_eligible_events_is_empty) ... ok\ntest_jsonl_overwrite_requires_opt_in (__main__.HiddenBehaviorTests.test_jsonl_overwrite_requires_opt_in) ... ok\ntest_jsonl_selected_field_order_and_explicit_options (__main__.HiddenBehaviorTests.test_jsonl_selected_field_order_and_explicit_options) ... ok\ntest_jsonl_zero_limit_is_empty (__main__.HiddenBehaviorTests.test_jsonl_zero_limit_is_empty) ... ok\n\n----------------------------------------------------------------------\nRan 30 tests in 0.241s\n\nOK\n"
+  },
+  "all_checks_passed": true,
+  "changes": [
+    {
+      "path": "audit_export.py",
+      "before_sha256": "1c6f785a8aab83eab1a8235a8304573bd658e8b6a720f95299c793d487ef0c11",
+      "after_sha256": "f52cbe6f732e2141273101f022c05cb86118769d7966dcb096639564e2cb29d5",
+      "before_lines": 83,
+      "after_lines": 90
+    },
+    {
+      "path": "test_audit_export.py",
+      "before_sha256": "db107db14d11907867c7502292b74007e970567343cea862fb994ea4e730af91",
+      "after_sha256": "95c99d888deda0c1c013b6f214f009d6b208cd3e8de26618f645d8f4f76e17be",
+      "before_lines": 80,
+      "after_lines": 207
+    }
+  ],
+  "unrelated_sentinel_changed": false,
+  "token_usage": null,
+  "solver_duration_ms": null
+}

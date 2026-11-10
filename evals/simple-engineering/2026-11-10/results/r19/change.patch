@@ -1,0 +1,185 @@
+--- before/audit_export.py
++++ after/audit_export.py
+@@ -31,8 +31,10 @@
+ 
+ 
+ def export_events(source, destination, *, fields=FIELDS, include_internal=False,
+-                  show_actors=False, limit=None, overwrite=False):
+-    """Write CSV and return the number of exported events."""
++                  show_actors=False, limit=None, overwrite=False, format="csv"):
++    """Write CSV or JSON Lines and return the number of exported events."""
++    if format not in ("csv", "jsonl"):
++        raise ValueError("format must be csv or jsonl")
+     fields = tuple(fields)
+     if not fields or len(set(fields)) != len(fields) or any(f not in FIELDS for f in fields):
+         raise ValueError("fields must be distinct names from id, actor, action")
+@@ -53,9 +55,13 @@
+             row["actor"] = "[redacted]"
+         rows.append(row)
+     with destination.open("w" if overwrite else "x", encoding="utf-8", newline="") as stream:
+-        writer = csv.DictWriter(stream, fieldnames=fields)
+-        writer.writeheader()
+-        writer.writerows({key: _csv_cell(value) for key, value in row.items()} for row in rows)
++        if format == "jsonl":
++            for row in rows:
++                stream.write(json.dumps(row, ensure_ascii=False) + "\n")
++        else:
++            writer = csv.DictWriter(stream, fieldnames=fields)
++            writer.writeheader()
++            writer.writerows({key: _csv_cell(value) for key, value in row.items()} for row in rows)
+     return len(rows)
+ 
+ 
+@@ -63,6 +69,7 @@
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument("source")
+     parser.add_argument("destination")
++    parser.add_argument("--format", choices=("csv", "jsonl"), default="csv")
+     parser.add_argument("--fields", default=",".join(FIELDS))
+     parser.add_argument("--include-internal", action="store_true")
+     parser.add_argument("--show-actors", action="store_true")
+@@ -72,7 +79,7 @@
+     try:
+         count = export_events(args.source, args.destination, fields=args.fields.split(","),
+                               include_internal=args.include_internal, show_actors=args.show_actors,
+-                              limit=args.limit, overwrite=args.overwrite)
++                              limit=args.limit, overwrite=args.overwrite, format=args.format)
+     except (ValueError, OSError) as error:
+         parser.exit(2, f"error: {error}\n")
+     print(f"Exported {count} events")
+--- before/test_audit_export.py
++++ after/test_audit_export.py
+@@ -75,6 +75,133 @@
+         self.assertEqual(result.stdout, "Exported 1 events\n")
+         self.assertEqual(list(self.read_rows()[0]), ["action", "id"])
+ 
++    def test_jsonl_defaults_filter_redact_and_preserve_types(self):
++        self.assertEqual(export_events(self.source, self.output, format="jsonl"), 2)
++        raw = self.output.read_text(encoding="utf-8")
++        self.assertTrue(raw.endswith("\n"))
++        rows = [json.loads(line) for line in raw.splitlines()]
++        self.assertEqual(rows, [
++            {"id": 2, "actor": "[redacted]", "action": "=SUM(1,2)"},
++            {"id": 3, "actor": "[redacted]", "action": "café, opened"},
++        ])
++        self.assertEqual(list(rows[0]), ["id", "actor", "action"])
++        self.assertIs(type(rows[0]["id"]), int)
++
++    def test_jsonl_round_trips_strings_and_selected_order(self):
++        actions = ['=café "quoted"\nnext\rline', '+plus', '-minus', '@mention', '\ttab', '\rcarriage']
++        events = [{"id": i, "actor": 'Zoë "Z"\n名字', "action": action}
++                  for i, action in enumerate(actions)]
++        self.source.write_text(json.dumps(events), encoding="utf-8")
++        count = export_events(self.source, self.output, format="jsonl",
++                              fields=("action", "actor", "id"), show_actors=True)
++        self.assertEqual(count, len(events))
++        lines = self.output.read_text(encoding="utf-8").splitlines()
++        self.assertEqual(len(lines), len(events))
++        rows = [json.loads(line) for line in lines]
++        self.assertEqual(rows, events)
++        self.assertTrue(all(list(row) == ["action", "actor", "id"] for row in rows))
++
++    def test_jsonl_options_and_overwrite(self):
++        count = export_events(self.source, self.output, format="jsonl", fields=("actor", "id"),
++                              show_actors=True, limit=1)
++        self.assertEqual(count, 1)
++        row = json.loads(self.output.read_text())
++        self.assertEqual(row, {"actor": "alice@example.test", "id": 2})
++        self.assertEqual(list(row), ["actor", "id"])
++        count = export_events(self.source, self.output, format="jsonl", include_internal=True,
++                              overwrite=True, limit=1)
++        self.assertEqual(count, 1)
++        self.assertEqual(json.loads(self.output.read_text()),
++                         {"id": 1, "actor": "[redacted]", "action": "internal"})
++
++    def test_jsonl_zero_events_is_empty(self):
++        for events, options in ((self.events, {"limit": 0}), ([], {}), ([self.events[0]], {})):
++            with self.subTest(events=events, options=options):
++                self.source.write_text(json.dumps(events), encoding="utf-8")
++                count = export_events(self.source, self.output, format="jsonl", overwrite=True, **options)
++                self.assertEqual(count, 0)
++                self.assertEqual(self.output.read_bytes(), b"")
++
++    def test_jsonl_protects_existing_destination_and_source(self):
++        self.output.write_text("keep me", encoding="utf-8")
++        with self.assertRaises(FileExistsError):
++            export_events(self.source, self.output, format="jsonl")
++        self.assertEqual(self.output.read_text(), "keep me")
++        before = self.source.read_bytes()
++        with self.assertRaises(ValueError):
++            export_events(self.source, self.source, format="jsonl", overwrite=True)
++        self.assertEqual(self.source.read_bytes(), before)
++
++    def test_validation_preserves_destination_in_both_formats(self):
++        invalid_options = ({"fields": ()}, {"fields": ("id", "id")},
++                           {"fields": ("internal",)}, {"limit": -1}, {"limit": True})
++        invalid_sources = ({}, [None], [{"id": True, "actor": "x", "action": "y"}],
++                           [{"id": 1, "actor": None, "action": "y"}],
++                           [{"id": 1, "actor": "x", "action": "y", "internal": 1}])
++        for format in ("csv", "jsonl"):
++            cases = [(self.events, options) for options in invalid_options]
++            # Validate even records that would fall outside the export limit.
++            cases.extend((events, {"limit": 0}) for events in invalid_sources)
++            for events, options in cases:
++                for existing in (False, True):
++                    with self.subTest(format=format, events=events, options=options, existing=existing):
++                        self.source.write_text(json.dumps(events), encoding="utf-8")
++                        if existing:
++                            self.output.write_text("keep me", encoding="utf-8")
++                        else:
++                            self.output.unlink(missing_ok=True)
++                        with self.assertRaises(ValueError):
++                            export_events(self.source, self.output, format=format, overwrite=True, **options)
++                        if existing:
++                            self.assertEqual(self.output.read_text(), "keep me")
++                        else:
++                            self.assertFalse(self.output.exists())
++
++    def test_invalid_format_does_not_create_or_overwrite(self):
++        for format in ("xml", "JSONL", "", None):
++            for existing in (False, True):
++                with self.subTest(format=format, existing=existing):
++                    if existing:
++                        self.output.write_text("keep me", encoding="utf-8")
++                    else:
++                        self.output.unlink(missing_ok=True)
++                    with self.assertRaises(ValueError):
++                        export_events(self.source, self.output, format=format, overwrite=True)
++                    if existing:
++                        self.assertEqual(self.output.read_text(), "keep me")
++                    else:
++                        self.assertFalse(self.output.exists())
++
++    def test_cli_formats_and_invalid_format(self):
++        command = [sys.executable, str(Path(__file__).with_name("audit_export.py")),
++                   str(self.source), str(self.output)]
++        for format in ("csv", "jsonl"):
++            with self.subTest(format=format):
++                result = subprocess.run(command + ["--format", format, "--fields", "action,id",
++                                                   "--limit", "1", "--overwrite"],
++                                        capture_output=True, text=True)
++                self.assertEqual(result.returncode, 0, result.stderr)
++                self.assertEqual(result.stdout, "Exported 1 events\n")
++                if format == "jsonl":
++                    row = json.loads(self.output.read_text())
++                    self.assertEqual(row, {"action": "=SUM(1,2)", "id": 2})
++                else:
++                    row = self.read_rows()[0]
++                    self.assertEqual(row, {"action": "'=SUM(1,2)", "id": "2"})
++                self.assertEqual(list(row), ["action", "id"])
++        for existing in (False, True):
++            if existing:
++                self.output.write_text("keep me", encoding="utf-8")
++            else:
++                self.output.unlink()
++            result = subprocess.run(command + ["--format", "xml", "--overwrite"],
++                                    capture_output=True, text=True)
++            self.assertEqual(result.returncode, 2)
++            if existing:
++                self.assertEqual(self.output.read_text(), "keep me")
++            else:
++                self.assertFalse(self.output.exists())
++
+ 
+ if __name__ == "__main__":
+     unittest.main()

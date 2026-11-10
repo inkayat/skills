@@ -1,0 +1,9 @@
+The audit-export utility currently exports CSV. Add JSON Lines output for a downstream log consumer.
+
+Add a keyword-only format="csv" option to export_events and a --format csv|jsonl CLI option, also defaulting to csv. Existing callers and default CLI behavior must keep working. Unsupported format values must be rejected before creating or changing the destination.
+
+In JSONL mode, write one JSON object per exported event, followed by a newline. There is no header, and zero exported events produces an empty file. Objects must contain exactly the selected fields in the requested order; preserve integer IDs and string values. Unicode, quotes, and embedded line breaks must round-trip correctly. JSONL must not apply the spreadsheet-formula escaping used by CSV.
+
+All existing behavior remains available in both formats: internal-event filtering, actor redaction unless explicitly enabled, selected fields, limits applied after filtering, return counts and CLI count messages, explicit overwrite, source/destination protection, and validation before a destination is created or overwritten. The existing CSV formula escaping must remain intact.
+
+Keep this a focused standard-library-only change. You may add useful tests. Run the existing tests with: python3 -m unittest -v

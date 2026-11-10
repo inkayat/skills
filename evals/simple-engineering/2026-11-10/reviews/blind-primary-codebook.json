@@ -1,0 +1,20 @@
+{
+  "providers-A": "r10",
+  "providers-B": "r12",
+  "providers-C": "r01",
+  "providers-D": "r11",
+  "providers-E": "r02",
+  "providers-F": "r03",
+  "csv-A": "r15",
+  "csv-B": "r06",
+  "csv-C": "r14",
+  "csv-D": "r13",
+  "csv-E": "r05",
+  "csv-F": "r04",
+  "retry-A": "r18",
+  "retry-B": "r08",
+  "retry-C": "r17",
+  "retry-D": "r09",
+  "retry-E": "r16",
+  "retry-F": "r07"
+}

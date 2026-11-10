@@ -1,0 +1,604 @@
+[
+  {
+    "id": "r01",
+    "case": "providers",
+    "arm": "baseline",
+    "repetition": 1,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "README.md",
+        "before_sha256": "584dc8734ffadd3974057d8ed7f0dbe452ffe5323e82c9624781d68182286f59",
+        "after_sha256": "b7b111bb510ed6064b9fe00d8a52cfca2184ee2dd74140a16d407294a857c2b3",
+        "before_lines": 7,
+        "after_lines": 16
+      },
+      {
+        "path": "planner.py",
+        "before_sha256": "2454e35338f7b20e2358c739a0eff9509d544102523d7aa5db716a09d1dada48",
+        "after_sha256": "76f1211db0b1d3899eea3c4415ca38f400bf7b504a76f8c030e0540bd6a84186",
+        "before_lines": 20,
+        "after_lines": 30
+      },
+      {
+        "path": "tests/test_planner.py",
+        "before_sha256": "b0330052ca13f778d2119734e90541bfb11aba34eb5712d5dc83f5e6973246b5",
+        "after_sha256": "64898ff0cd50028819cd8a803f8d5fefbd98323e9f63558a17895578f3c0f4cb",
+        "before_lines": 8,
+        "after_lines": 77
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r02",
+    "case": "providers",
+    "arm": "candidate",
+    "repetition": 1,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "README.md",
+        "before_sha256": "584dc8734ffadd3974057d8ed7f0dbe452ffe5323e82c9624781d68182286f59",
+        "after_sha256": "f05f3b3485311bfd0f319850498cc05b74bdbe4a52ebe86b4dd31f64dee138a1",
+        "before_lines": 7,
+        "after_lines": 15
+      },
+      {
+        "path": "planner.py",
+        "before_sha256": "2454e35338f7b20e2358c739a0eff9509d544102523d7aa5db716a09d1dada48",
+        "after_sha256": "76f1211db0b1d3899eea3c4415ca38f400bf7b504a76f8c030e0540bd6a84186",
+        "before_lines": 20,
+        "after_lines": 30
+      },
+      {
+        "path": "tests/test_planner.py",
+        "before_sha256": "b0330052ca13f778d2119734e90541bfb11aba34eb5712d5dc83f5e6973246b5",
+        "after_sha256": "7ffd24378b8a5da299244e68c8356b360d36820145b215ef0271b7f8f8b87cdd",
+        "before_lines": 8,
+        "after_lines": 80
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r03",
+    "case": "providers",
+    "arm": "ponytail",
+    "repetition": 1,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "README.md",
+        "before_sha256": "584dc8734ffadd3974057d8ed7f0dbe452ffe5323e82c9624781d68182286f59",
+        "after_sha256": "d8e054113b5e5e9222255df28d88a95b4f9c52921d64f0c33f639ae16783c394",
+        "before_lines": 7,
+        "after_lines": 13
+      },
+      {
+        "path": "planner.py",
+        "before_sha256": "2454e35338f7b20e2358c739a0eff9509d544102523d7aa5db716a09d1dada48",
+        "after_sha256": "bbf3cd79ffa12c106aad318b805669c6f62e6f2ce50b0707bc51145cf3323e36",
+        "before_lines": 20,
+        "after_lines": 30
+      },
+      {
+        "path": "tests/test_planner.py",
+        "before_sha256": "b0330052ca13f778d2119734e90541bfb11aba34eb5712d5dc83f5e6973246b5",
+        "after_sha256": "60b5e8e60768e357c2674e3c09aa78f2ec727d47e2edee00e9c20bb7e59e02c5",
+        "before_lines": 8,
+        "after_lines": 74
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r04",
+    "case": "csv",
+    "arm": "baseline",
+    "repetition": 1,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "inventory.py",
+        "before_sha256": "4d8b58c9f936861f573d3361d812e714b8968bc9d5f0f8049b93b9d054a2e2fe",
+        "after_sha256": "6349e12d26ec0310e688e7bc9ab0c045b26a950492bc97c7daebd3152abcd914",
+        "before_lines": 14,
+        "after_lines": 23
+      },
+      {
+        "path": "tests/test_inventory.py",
+        "before_sha256": "2384273fe51cd240097cf4ee098b3d7647b1fb5e5c809cbcbfa54b93034a1a77",
+        "after_sha256": "b5e422d3d529247b0d54e7c41de4149e522d932a0be729ab3b3df8aa7f2e71c6",
+        "before_lines": 15,
+        "after_lines": 59
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r05",
+    "case": "csv",
+    "arm": "candidate",
+    "repetition": 1,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "inventory.py",
+        "before_sha256": "4d8b58c9f936861f573d3361d812e714b8968bc9d5f0f8049b93b9d054a2e2fe",
+        "after_sha256": "9e17d62a3665cc4a591448e38de0f858f36c76ddfa3ac11bee40a5c700682317",
+        "before_lines": 14,
+        "after_lines": 25
+      },
+      {
+        "path": "tests/test_csv_regressions.py",
+        "before_sha256": null,
+        "after_sha256": "1e308d4a187744973703694b1c57a89d162b740a3a864ad11efd618c759d10b9",
+        "before_lines": 0,
+        "after_lines": 56
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r06",
+    "case": "csv",
+    "arm": "ponytail",
+    "repetition": 1,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "inventory.py",
+        "before_sha256": "4d8b58c9f936861f573d3361d812e714b8968bc9d5f0f8049b93b9d054a2e2fe",
+        "after_sha256": "a1a53f5664954b977d7ef147afc972886f3c51fabdcb3d243b48502dea37f4df",
+        "before_lines": 14,
+        "after_lines": 23
+      },
+      {
+        "path": "tests/test_inventory.py",
+        "before_sha256": "2384273fe51cd240097cf4ee098b3d7647b1fb5e5c809cbcbfa54b93034a1a77",
+        "after_sha256": "5d67dbca814bade32aed12e447f14868f9381024dcd6f4a1b1d4d04a97501716",
+        "before_lines": 15,
+        "after_lines": 58
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r07",
+    "case": "retry",
+    "arm": "baseline",
+    "repetition": 1,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "retry.py",
+        "before_sha256": "7a8b40de06b6283a3feade03ff226308abc939645697eccfdae03f94e65f7c9a",
+        "after_sha256": "74180a976c52543cb1f29065932c5718e1cb5dbb41637020c460efad7ae5d5d8",
+        "before_lines": 11,
+        "after_lines": 15
+      },
+      {
+        "path": "tests/test_retry.py",
+        "before_sha256": "e23af3992b5c963d0cc84ee90ee798ab2db124739007411ff6914b31b08a9a40",
+        "after_sha256": "d3155bb9baaaeab34bce17c1b3597c1711bc6d484a3dc7996557ebe59f5d63b8",
+        "before_lines": 14,
+        "after_lines": 48
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r08",
+    "case": "retry",
+    "arm": "candidate",
+    "repetition": 1,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "retry.py",
+        "before_sha256": "7a8b40de06b6283a3feade03ff226308abc939645697eccfdae03f94e65f7c9a",
+        "after_sha256": "74180a976c52543cb1f29065932c5718e1cb5dbb41637020c460efad7ae5d5d8",
+        "before_lines": 11,
+        "after_lines": 15
+      },
+      {
+        "path": "tests/test_retry.py",
+        "before_sha256": "e23af3992b5c963d0cc84ee90ee798ab2db124739007411ff6914b31b08a9a40",
+        "after_sha256": "4e15a36ced11c7285e0f13e1b07674807d8cbf9352bdbcf198862e5cc904a83b",
+        "before_lines": 14,
+        "after_lines": 53
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r09",
+    "case": "retry",
+    "arm": "ponytail",
+    "repetition": 1,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "retry.py",
+        "before_sha256": "7a8b40de06b6283a3feade03ff226308abc939645697eccfdae03f94e65f7c9a",
+        "after_sha256": "74180a976c52543cb1f29065932c5718e1cb5dbb41637020c460efad7ae5d5d8",
+        "before_lines": 11,
+        "after_lines": 15
+      },
+      {
+        "path": "tests/test_retry.py",
+        "before_sha256": "e23af3992b5c963d0cc84ee90ee798ab2db124739007411ff6914b31b08a9a40",
+        "after_sha256": "b98dd74e514e8e8d1da5ef025b339ca07339565ba277285e9a3c61b4637754d8",
+        "before_lines": 14,
+        "after_lines": 46
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r10",
+    "case": "providers",
+    "arm": "ponytail",
+    "repetition": 2,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "README.md",
+        "before_sha256": "584dc8734ffadd3974057d8ed7f0dbe452ffe5323e82c9624781d68182286f59",
+        "after_sha256": "754c1ffb916e64a7acaff976980c0b9c50d0fc9ff414361be89d7e88fb0a1edc",
+        "before_lines": 7,
+        "after_lines": 19
+      },
+      {
+        "path": "planner.py",
+        "before_sha256": "2454e35338f7b20e2358c739a0eff9509d544102523d7aa5db716a09d1dada48",
+        "after_sha256": "47088321bfed0ee1b68d10ac8e9f8134b5faf8d752ca116fc19ec6668583aae1",
+        "before_lines": 20,
+        "after_lines": 31
+      },
+      {
+        "path": "tests/test_planner.py",
+        "before_sha256": "b0330052ca13f778d2119734e90541bfb11aba34eb5712d5dc83f5e6973246b5",
+        "after_sha256": "e063c641b0e20f6f4bf05ec434f1f5774dfcc434f00eff9b70e72de167f8a2af",
+        "before_lines": 8,
+        "after_lines": 73
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r11",
+    "case": "providers",
+    "arm": "baseline",
+    "repetition": 2,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "README.md",
+        "before_sha256": "584dc8734ffadd3974057d8ed7f0dbe452ffe5323e82c9624781d68182286f59",
+        "after_sha256": "7ae5506a01bc6cb3558757f1d89dbaad9107a5cd506bdf1cfd08e0683a5d5a01",
+        "before_lines": 7,
+        "after_lines": 14
+      },
+      {
+        "path": "planner.py",
+        "before_sha256": "2454e35338f7b20e2358c739a0eff9509d544102523d7aa5db716a09d1dada48",
+        "after_sha256": "e90a019d54993549d269b7d61a727773046e67125ba8633e68b54cc44a445931",
+        "before_lines": 20,
+        "after_lines": 30
+      },
+      {
+        "path": "tests/test_planner.py",
+        "before_sha256": "b0330052ca13f778d2119734e90541bfb11aba34eb5712d5dc83f5e6973246b5",
+        "after_sha256": "e4416c500647455af44aa21bdfc52eb3bc37515bda0e17d5591c2730ff993731",
+        "before_lines": 8,
+        "after_lines": 77
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r12",
+    "case": "providers",
+    "arm": "candidate",
+    "repetition": 2,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "README.md",
+        "before_sha256": "584dc8734ffadd3974057d8ed7f0dbe452ffe5323e82c9624781d68182286f59",
+        "after_sha256": "0e3a45fa86fb36fc93474d434a402b1b7feb1fa0a3e299bca985a435a29b0e91",
+        "before_lines": 7,
+        "after_lines": 17
+      },
+      {
+        "path": "planner.py",
+        "before_sha256": "2454e35338f7b20e2358c739a0eff9509d544102523d7aa5db716a09d1dada48",
+        "after_sha256": "21a53e4c8d68cc6949b298badaf110f84975e8fd9a270a0aa34b7ee7001099e6",
+        "before_lines": 20,
+        "after_lines": 30
+      },
+      {
+        "path": "tests/test_planner.py",
+        "before_sha256": "b0330052ca13f778d2119734e90541bfb11aba34eb5712d5dc83f5e6973246b5",
+        "after_sha256": "a136b4c1d698712e7507de116e92757aa1278047b6dad96551eebf52bbe113a4",
+        "before_lines": 8,
+        "after_lines": 95
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r13",
+    "case": "csv",
+    "arm": "ponytail",
+    "repetition": 2,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "inventory.py",
+        "before_sha256": "4d8b58c9f936861f573d3361d812e714b8968bc9d5f0f8049b93b9d054a2e2fe",
+        "after_sha256": "1bfe0fd88ecb64b8137f99ebaeadda6d05ba58fe0a66725d8d78ab46d0488dfe",
+        "before_lines": 14,
+        "after_lines": 23
+      },
+      {
+        "path": "tests/test_inventory.py",
+        "before_sha256": "2384273fe51cd240097cf4ee098b3d7647b1fb5e5c809cbcbfa54b93034a1a77",
+        "after_sha256": "31e11c6d599410da09d9357ab30ec25ca27cd114c40a1e78283dec743fb4b94c",
+        "before_lines": 15,
+        "after_lines": 55
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r14",
+    "case": "csv",
+    "arm": "baseline",
+    "repetition": 2,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "inventory.py",
+        "before_sha256": "4d8b58c9f936861f573d3361d812e714b8968bc9d5f0f8049b93b9d054a2e2fe",
+        "after_sha256": "13c593aba7f98646e029bc3a8282ccc1c03de086fdebebec1742ae9eaf60e8a2",
+        "before_lines": 14,
+        "after_lines": 23
+      },
+      {
+        "path": "tests/test_inventory.py",
+        "before_sha256": "2384273fe51cd240097cf4ee098b3d7647b1fb5e5c809cbcbfa54b93034a1a77",
+        "after_sha256": "17d477c2ac6c3456df9f4091caab15eddfc336706f6e722aec771006be00b0ea",
+        "before_lines": 15,
+        "after_lines": 61
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r15",
+    "case": "csv",
+    "arm": "candidate",
+    "repetition": 2,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "inventory.py",
+        "before_sha256": "4d8b58c9f936861f573d3361d812e714b8968bc9d5f0f8049b93b9d054a2e2fe",
+        "after_sha256": "bc5b96e7df08835372dc2a839e557ba79f6bcc4011f4b1cdf3a19ca86659a877",
+        "before_lines": 14,
+        "after_lines": 23
+      },
+      {
+        "path": "tests/test_inventory.py",
+        "before_sha256": "2384273fe51cd240097cf4ee098b3d7647b1fb5e5c809cbcbfa54b93034a1a77",
+        "after_sha256": "40982216371d45b838413481628b09c4de58016557ed0bc489c8257b4344e366",
+        "before_lines": 15,
+        "after_lines": 73
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r16",
+    "case": "retry",
+    "arm": "ponytail",
+    "repetition": 2,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "README.md",
+        "before_sha256": "dbca4904389b0a5c6a4361baeab386ea2bba4fe912e1f7373ee47b01ab1a0bb9",
+        "after_sha256": "20bfb5f9b97ab447380aa470a75de3ad6b75c646391dd1d77dc2dd9df5f17e22",
+        "before_lines": 6,
+        "after_lines": 8
+      },
+      {
+        "path": "retry.py",
+        "before_sha256": "7a8b40de06b6283a3feade03ff226308abc939645697eccfdae03f94e65f7c9a",
+        "after_sha256": "74180a976c52543cb1f29065932c5718e1cb5dbb41637020c460efad7ae5d5d8",
+        "before_lines": 11,
+        "after_lines": 15
+      },
+      {
+        "path": "tests/test_retry.py",
+        "before_sha256": "e23af3992b5c963d0cc84ee90ee798ab2db124739007411ff6914b31b08a9a40",
+        "after_sha256": "a82c83e3917832c96a4899d340201cb74b06c9c362b0db7fca39b018e37829e6",
+        "before_lines": 14,
+        "after_lines": 47
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r17",
+    "case": "retry",
+    "arm": "baseline",
+    "repetition": 2,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "retry.py",
+        "before_sha256": "7a8b40de06b6283a3feade03ff226308abc939645697eccfdae03f94e65f7c9a",
+        "after_sha256": "74180a976c52543cb1f29065932c5718e1cb5dbb41637020c460efad7ae5d5d8",
+        "before_lines": 11,
+        "after_lines": 15
+      },
+      {
+        "path": "tests/test_retry.py",
+        "before_sha256": "e23af3992b5c963d0cc84ee90ee798ab2db124739007411ff6914b31b08a9a40",
+        "after_sha256": "bd1f6354498794a075e9aec443ac708190b01a05a0293b4cd18ab244f3795757",
+        "before_lines": 14,
+        "after_lines": 52
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r18",
+    "case": "retry",
+    "arm": "candidate",
+    "repetition": 2,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "README.md",
+        "before_sha256": "dbca4904389b0a5c6a4361baeab386ea2bba4fe912e1f7373ee47b01ab1a0bb9",
+        "after_sha256": "c3142514e88e52e339c2d23849243048b3a06f5ca5e88b94388dc4007a573f54",
+        "before_lines": 6,
+        "after_lines": 8
+      },
+      {
+        "path": "retry.py",
+        "before_sha256": "7a8b40de06b6283a3feade03ff226308abc939645697eccfdae03f94e65f7c9a",
+        "after_sha256": "74180a976c52543cb1f29065932c5718e1cb5dbb41637020c460efad7ae5d5d8",
+        "before_lines": 11,
+        "after_lines": 15
+      },
+      {
+        "path": "tests/test_retry.py",
+        "before_sha256": "e23af3992b5c963d0cc84ee90ee798ab2db124739007411ff6914b31b08a9a40",
+        "after_sha256": "ec21f9ce0b2a0cfa3e3a7fb3879716c84d8fc83da15d61dd02c77ee539b102fd",
+        "before_lines": 14,
+        "after_lines": 55
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r19",
+    "case": "heldout",
+    "arm": "candidate",
+    "repetition": 1,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "audit_export.py",
+        "before_sha256": "1c6f785a8aab83eab1a8235a8304573bd658e8b6a720f95299c793d487ef0c11",
+        "after_sha256": "f52cbe6f732e2141273101f022c05cb86118769d7966dcb096639564e2cb29d5",
+        "before_lines": 83,
+        "after_lines": 90
+      },
+      {
+        "path": "test_audit_export.py",
+        "before_sha256": "db107db14d11907867c7502292b74007e970567343cea862fb994ea4e730af91",
+        "after_sha256": "95c99d888deda0c1c013b6f214f009d6b208cd3e8de26618f645d8f4f76e17be",
+        "before_lines": 80,
+        "after_lines": 207
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r20",
+    "case": "heldout",
+    "arm": "ponytail",
+    "repetition": 1,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "audit_export.py",
+        "before_sha256": "1c6f785a8aab83eab1a8235a8304573bd658e8b6a720f95299c793d487ef0c11",
+        "after_sha256": "0bdda09d7573716cab4ee28bce17007c2d8841503006a150141e8a2eb38798ab",
+        "before_lines": 83,
+        "after_lines": 90
+      },
+      {
+        "path": "test_audit_export.py",
+        "before_sha256": "db107db14d11907867c7502292b74007e970567343cea862fb994ea4e730af91",
+        "after_sha256": "c713c45444554edc706b6e48cce25e3c0c91b1018172a3978d9e3385be8dab8a",
+        "before_lines": 80,
+        "after_lines": 177
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  },
+  {
+    "id": "r21",
+    "case": "heldout",
+    "arm": "baseline",
+    "repetition": 1,
+    "all_checks_passed": true,
+    "changes": [
+      {
+        "path": "audit_export.py",
+        "before_sha256": "1c6f785a8aab83eab1a8235a8304573bd658e8b6a720f95299c793d487ef0c11",
+        "after_sha256": "f52cbe6f732e2141273101f022c05cb86118769d7966dcb096639564e2cb29d5",
+        "before_lines": 83,
+        "after_lines": 90
+      },
+      {
+        "path": "test_audit_export.py",
+        "before_sha256": "db107db14d11907867c7502292b74007e970567343cea862fb994ea4e730af91",
+        "after_sha256": "7657e6bb3e589de6f4af4e5a7a6b95733fa6fef210963af735f2ba4264b2dc16",
+        "before_lines": 80,
+        "after_lines": 184
+      }
+    ],
+    "unrelated_sentinel_changed": false,
+    "token_usage": null,
+    "solver_duration_ms": null
+  }
+]

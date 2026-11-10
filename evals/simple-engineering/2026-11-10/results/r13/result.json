@@ -1,0 +1,50 @@
+{
+  "id": "r13",
+  "case": "csv",
+  "arm": "ponytail",
+  "repetition": 2,
+  "public": {
+    "command": [
+      "/Users/inkayat/.local/share/mise/installs/python/3.14/bin/python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_empty_rows (test_inventory.CsvRegressionTests.test_empty_rows) ... ok\ntest_header_must_be_exact (test_inventory.CsvRegressionTests.test_header_must_be_exact) ... ok\ntest_invalid_rows_leave_stock_unchanged (test_inventory.CsvRegressionTests.test_invalid_rows_leave_stock_unchanged) ... ok\ntest_preserves_name_whitespace (test_inventory.CsvRegressionTests.test_preserves_name_whitespace) ... ok\ntest_quoted_fields_in_preview_and_import (test_inventory.CsvRegressionTests.test_quoted_fields_in_preview_and_import) ... ok\ntest_import (test_inventory.ExistingInventoryTests.test_import) ... ok\ntest_invalid_quantity (test_inventory.ExistingInventoryTests.test_invalid_quantity) ... ok\ntest_preview (test_inventory.ExistingInventoryTests.test_preview) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.000s\n\nOK\n"
+  },
+  "hidden": {
+    "command": [
+      "/Users/inkayat/.local/share/mise/installs/python/3.14/bin/python3",
+      "<EVALUATION_ROOT>/cases/csv/grader.py",
+      "<EVALUATION_ROOT>/runs/r13/workspace"
+    ],
+    "returncode": 0,
+    "stdout": "",
+    "stderr": "test_escaped_quotes_blank_rows_and_zero (__main__.Contract.test_escaped_quotes_blank_rows_and_zero) ... ok\ntest_header_and_field_validation (__main__.Contract.test_header_and_field_validation) ... ok\ntest_import_consumer (__main__.Contract.test_import_consumer) ... ok\ntest_preview_consumer (__main__.Contract.test_preview_consumer) ... ok\ntest_quoted_comma_and_newline (__main__.Contract.test_quoted_comma_and_newline) ... ok\ntest_validation_and_atomicity (__main__.Contract.test_validation_and_atomicity) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.001s\n\nOK\n"
+  },
+  "all_checks_passed": true,
+  "changes": [
+    {
+      "path": "inventory.py",
+      "before_sha256": "4d8b58c9f936861f573d3361d812e714b8968bc9d5f0f8049b93b9d054a2e2fe",
+      "after_sha256": "1bfe0fd88ecb64b8137f99ebaeadda6d05ba58fe0a66725d8d78ab46d0488dfe",
+      "before_lines": 14,
+      "after_lines": 23
+    },
+    {
+      "path": "tests/test_inventory.py",
+      "before_sha256": "2384273fe51cd240097cf4ee098b3d7647b1fb5e5c809cbcbfa54b93034a1a77",
+      "after_sha256": "31e11c6d599410da09d9357ab30ec25ca27cd114c40a1e78283dec743fb4b94c",
+      "before_lines": 15,
+      "after_lines": 55
+    }
+  ],
+  "unrelated_sentinel_changed": false,
+  "token_usage": null,
+  "solver_duration_ms": null
+}

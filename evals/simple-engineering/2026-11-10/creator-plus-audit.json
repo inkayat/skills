@@ -1,0 +1,54 @@
+{
+  "skills": [
+    {
+      "path": "work/simple-engineering-20261110/repo/skills/simple-engineering",
+      "name": "simple-engineering",
+      "counts": {
+        "error": 0,
+        "warn": 0,
+        "note": 1
+      },
+      "passed": [
+        "FM1",
+        "FM2",
+        "FM3",
+        "FM4",
+        "FM5",
+        "DS1",
+        "DS2",
+        "DS3",
+        "DS4",
+        "ST1",
+        "ST2",
+        "ST4",
+        "ST5",
+        "ST6",
+        "ST7",
+        "CT3",
+        "CT9",
+        "WF1",
+        "SC5",
+        "NM2",
+        "NM4",
+        "HK1"
+      ],
+      "findings": [
+        {
+          "level": "NOTE",
+          "rule": "CT3",
+          "file": "references/sources.md",
+          "lines": [
+            3
+          ],
+          "message": "1 dated marker(s) such as 2026-11-10. If a date stands in for a rule's reason, write the reason instead; dates can sit in an '## Old patterns' section."
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "skills": 1,
+    "error": 0,
+    "warn": 0,
+    "note": 1
+  }
+}

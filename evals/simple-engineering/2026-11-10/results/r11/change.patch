@@ -1,0 +1,136 @@
+--- before/README.md
++++ after/README.md
+@@ -1,7 +1,14 @@
+ # Workflow planner
+ 
+ Python standard library only. Run `python3 -m unittest discover -s tests -v`.
+-`python3 planner.py TASK [--config config.json]` prints a plan as JSON.
+-Config can contain `stages`, a list included unchanged in the plan.
+-`make_plan(task, config=None)` returns the same plan for Python callers.
+-Planning has no execution side effects.
++`python3 planner.py TASK [--config config.json] [--assistant {claude,firstmate,astro}]` prints a plan as JSON.
++Config can contain `stages`, a list included unchanged in the plan, and an optional
++`assistant`: `claude`, `firstmate`, or `astro`.
++For example: `{"assistant": "firstmate", "stages": ["build", "review"]}`.
++The command-line flag overrides config; config overrides the default, `claude`.
++An unsupported selected assistant produces an error and no plan.
++
++`make_plan(task, config=None, assistant=None)` returns the same plan for Python callers.
++Its optional `assistant` argument overrides config when supplied; unsupported
++selections raise `ValueError`.
++Planning only prints or returns a plan; it never launches an assistant.
+--- before/planner.py
++++ after/planner.py
+@@ -1,20 +1,30 @@
+ import argparse
+ import json
+ 
+-def make_plan(task, config=None):
++ASSISTANTS = ("claude", "firstmate", "astro")
++
++def make_plan(task, config=None, assistant=None):
+     config = config or {}
+-    return {"task": task, "assistant": "claude", "stages": config.get("stages", ["build", "review"])}
++    selected = assistant if assistant is not None else config.get("assistant", "claude")
++    if selected not in ASSISTANTS:
++        raise ValueError(f"Unsupported assistant {selected!r}; choose from {', '.join(ASSISTANTS)}")
++    return {"task": task, "assistant": selected, "stages": config.get("stages", ["build", "review"])}
+ 
+ def main():
+     parser = argparse.ArgumentParser()
+     parser.add_argument("task")
+     parser.add_argument("--config")
++    parser.add_argument("--assistant", choices=ASSISTANTS, help="Override the configured assistant (default: claude)")
+     args = parser.parse_args()
+     config = {}
+     if args.config:
+         with open(args.config) as stream:
+             config = json.load(stream)
+-    print(json.dumps(make_plan(args.task, config)))
++    try:
++        plan = make_plan(args.task, config, args.assistant)
++    except ValueError as error:
++        parser.error(str(error))
++    print(json.dumps(plan))
+ 
+ if __name__ == "__main__":
+     main()
+--- before/tests/test_planner.py
++++ after/tests/test_planner.py
+@@ -1,3 +1,8 @@
++import json
++from pathlib import Path
++import subprocess
++import sys
++import tempfile
+ import unittest
+ from planner import make_plan
+ 
+@@ -6,3 +11,67 @@
+         self.assertEqual(make_plan("ship"), {"task": "ship", "assistant": "claude", "stages": ["build", "review"]})
+     def test_custom_stages(self):
+         self.assertEqual(make_plan("ship", {"stages": ["test"]})["stages"], ["test"])
++
++    def test_config_assistants(self):
++        for assistant in ("claude", "firstmate", "astro"):
++            with self.subTest(assistant=assistant):
++                self.assertEqual(make_plan("ship", {"assistant": assistant, "stages": []}),
++                                 {"task": "ship", "assistant": assistant, "stages": []})
++
++    def test_override(self):
++        self.assertEqual(make_plan("ship", {"assistant": "astro"}, "claude")["assistant"], "claude")
++
++    def test_invalid_config_selection(self):
++        for assistant in ("unknown", "", None, [], {}, 3):
++            with self.subTest(assistant=assistant):
++                with self.assertRaisesRegex(ValueError, "Unsupported assistant"):
++                    make_plan("ship", {"assistant": assistant})
++
++    def test_invalid_override_does_not_fall_back(self):
++        with self.assertRaisesRegex(ValueError, "Unsupported assistant"):
++            make_plan("ship", {"assistant": "claude"}, "unknown")
++
++
++class CommandLineTests(unittest.TestCase):
++    def run_planner(self, *arguments):
++        planner = Path(__file__).resolve().parents[1] / "planner.py"
++        return subprocess.run([sys.executable, str(planner), "ship", *arguments],
++                              capture_output=True, text=True)
++
++    def test_default_and_all_flags(self):
++        for arguments, assistant in (((), "claude"), (("--assistant", "claude"), "claude"),
++                                     (("--assistant", "firstmate"), "firstmate"),
++                                     (("--assistant", "astro"), "astro")):
++            with self.subTest(arguments=arguments):
++                result = self.run_planner(*arguments)
++                self.assertEqual(result.returncode, 0, result.stderr)
++                self.assertEqual(json.loads(result.stdout),
++                                 {"task": "ship", "assistant": assistant, "stages": ["build", "review"]})
++
++    def test_config_and_flag_precedence(self):
++        with tempfile.TemporaryDirectory() as directory:
++            config = Path(directory) / "config.json"
++            config.write_text(json.dumps({"assistant": "firstmate", "stages": ["test"]}))
++            for extra, assistant in (((), "firstmate"), (("--assistant", "astro"), "astro")):
++                with self.subTest(extra=extra):
++                    result = self.run_planner("--config", str(config), *extra)
++                    self.assertEqual(result.returncode, 0, result.stderr)
++                    self.assertEqual(json.loads(result.stdout),
++                                     {"task": "ship", "assistant": assistant, "stages": ["test"]})
++
++    def test_invalid_flag(self):
++        result = self.run_planner("--assistant", "unknown")
++        self.assertNotEqual(result.returncode, 0)
++        self.assertEqual(result.stdout, "")
++        self.assertIn("invalid choice", result.stderr)
++        self.assertIn("unknown", result.stderr)
++
++    def test_invalid_config(self):
++        with tempfile.TemporaryDirectory() as directory:
++            config = Path(directory) / "config.json"
++            config.write_text(json.dumps({"assistant": "unknown"}))
++            result = self.run_planner("--config", str(config))
++            self.assertNotEqual(result.returncode, 0)
++            self.assertEqual(result.stdout, "")
++            self.assertIn("Unsupported assistant 'unknown'", result.stderr)
++            self.assertNotIn("Traceback", result.stderr)

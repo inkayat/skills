@@ -376,6 +376,22 @@ class UpstreamTests(unittest.TestCase):
         self.command(expected=2, error="unsupported_source")
         self.assertEqual(self.snapshot(), before)
 
+    def test_ancestor_resource_outside_skill_folder_is_required_retained_and_reported(self):
+        self.files["skills/demo/SKILL.md"] = BODY.replace(b"references/guide.md", b"../../references/standard.md")
+        self.files["references/standard.md"] = b"Shared standard.\n"
+        del self.files["skills/demo/references/guide.md"]
+        self.publish()
+        before = self.snapshot()
+        self.command(expected=2, error="missing_reference")
+        self.assertEqual(self.snapshot(), before)
+
+        self.config["sources"][0]["include"] = ["skills/demo", "references/standard.md"]
+        self.write_config()
+        result = self.command()
+        self.assertEqual((self.root / "upstream/demo/references/standard.md").read_bytes(), b"Shared standard.\n")
+        self.assertEqual(result["layout"][0]["outside_folder_references"], ["references/standard.md"])
+        self.assertEqual(self.command("verify")["status"], "verified")
+
     def test_ancestor_license_directory_requires_explicit_terms_review(self):
         self.files["LICENSES/third-party.txt"] = b"Additional legal terms.\n"
         self.publish()

@@ -25,12 +25,14 @@ Paths below are relative to `upstream/`. Keep the complete source tree when prep
 |---|---|---|
 | Humanizer | `humanizer/SKILL.md` | Prose editing with factual meaning and register preserved |
 | Grilling | `mattpocock/skills/productivity/grilling/SKILL.md` | Explicit interactive plan/design interviews; not an unattended worker default |
+| Codebase design | `mattpocock/skills/engineering/codebase-design/SKILL.md` | Module/interface/seam design vocabulary and design-it-twice option comparison for structural decisions; no workflow or approval gate of its own |
 | Systematic debugging | `superpowers/skills/systematic-debugging/SKILL.md` | Diagnosis before fixes; configured firstmate-config source family |
 | Test-driven development | `superpowers/skills/test-driven-development/SKILL.md` | Behavioral red/green development; configured source family |
 | Verification before completion | `superpowers/skills/verification-before-completion/SKILL.md` | Evidence before success claims; configured source family |
 | Test behavior, not implementation | `pstack/pstack/skills/principle-test-behavior-not-implementation/SKILL.md` | Consumer-observable regression tests |
 | Code simplification | `addyosmani/skills/code-simplification/SKILL.md` | Behavior-preserving readability improvements; configured source family |
 | Performance optimization | `addyosmani/skills/performance-optimization/SKILL.md` | Measured optimization and caching tradeoffs; includes ancestor checklist |
+| Planning and task breakdown | `addyosmani/skills/planning-and-task-breakdown/SKILL.md` | Read-only decomposition of a spec into ordered, verifiable tasks; includes ancestor `references/definition-of-done.md` |
 | Ponytail | `ponytail/skills/ponytail/SKILL.md` | Small complete changes and existing-facility reuse; configured source family |
 | Ponytail review | `ponytail/skills/ponytail-review/SKILL.md` | Correctness/safety/necessity review; configured source family |
 | Be ambitious | `be-ambitious/SKILL.md` | Explicit outcome/depth reframing; already an Astro-owned upstream at the inspected revision |
@@ -83,7 +85,7 @@ For controlled offline reproduction, `--offline <directory>` reads JSON API snap
 
 ## Consumption and limits
 
-Use the [consumer map](docs/sources.md#consumer-ownership-and-binding) before binding anything. Conventional frontmatter and source-relative references are checked; **native consumer execution and model benefit are not claimed**. In particular, Astro's folder-only copy cannot carry Performance Optimization's `../../references/performance-checklist.md` by copying only that skill's leaf folder.
+Use the [consumer map](docs/sources.md#consumer-ownership-and-binding) before binding anything. Conventional frontmatter and source-relative references are checked; **native consumer execution and model benefit are not claimed**. In particular, Astro's folder-only copy cannot carry the ancestor references of Performance Optimization and Planning and task breakdown; see the [Astro notes](docs/sources.md#astro).
 
 The former task-local `minimal-change`/`faithful-editing` candidates and evaluation engine are no longer active repository content. Complete prior source and experiment evidence was preserved privately before this cutover. Their failed benefit comparisons were not reclassified, and no new model evaluations were run for this upstream reorganization.
 

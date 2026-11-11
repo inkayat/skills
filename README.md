@@ -69,7 +69,7 @@ Tracking refs are explicit in the manifest; the initial selection follows `main`
 
 ### Drift and terms
 
-- Local file edits, permission changes, missing files, extra files/directories and symbolic links in `upstream/` cause refusal. There is no force option. Unrelated root files and `first-party/` are not managed or traversed.
+- Local file edits, executable-bit changes, missing files, extra files/directories and symbolic links in `upstream/` cause refusal. There is no force option. Unrelated root files and `first-party/` are not managed or traversed.
 - Repository name **and numeric GitHub ID**, resolved commit/tree identities, Git blob IDs, SHA-256 and file modes are checked. Submodules, symlinks, LFS pointers, truncated responses, unsafe/colliding paths and project instruction files are refused.
 - Selected entrypoint names and their file set cannot silently expand. Required files and source-relative Markdown/resource references must resolve inside that source's retained tree.
 - Reviewed LICENSE/LICENCE/NOTICE/COPYING/COPYRIGHT files, relevant LICENSES/LICENCES directories and selected skill license headers are pinned in the manifest. New, missing or changed legal surfaces stop the refresh. Inspect the upstream change and update the explicit terms declaration only after review; never bypass it by altering the generated lock.

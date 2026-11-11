@@ -1,0 +1,202 @@
+{
+  "files": {
+    "addyosmani/LICENSE": {
+      "git_blob": "d67778ada6b9cda6227e9130da182c13e73c8b2e",
+      "mode": "100644",
+      "sha256": "6f202f8bd568cd730dbb2b0d1f8e243bc74c2fa1f64dbce9b2c7ea08bd5c9fd7"
+    },
+    "addyosmani/references/performance-checklist.md": {
+      "git_blob": "81f754909440211c3a925a770abccf2da6d1d0fc",
+      "mode": "100644",
+      "sha256": "ce946457d4a502846e781a2747cf6af50bcc79b1957a66dc024f50557e8982e1"
+    },
+    "addyosmani/skills/code-simplification/SKILL.md": {
+      "git_blob": "c4f794aa3fc63ea041989b30be7a3887c79c53ed",
+      "mode": "100644",
+      "sha256": "e13b433345e6bf425c3625442ac1b3507b371c18d7ea3e3db822da7a7f742a29"
+    },
+    "addyosmani/skills/performance-optimization/SKILL.md": {
+      "git_blob": "296cf3f79eaa4c910cae44ecd50fcc4246e2b9d5",
+      "mode": "100644",
+      "sha256": "82af71540457cf853893685211f64509cd1e781c0de09d0186f16960f2d6eeba"
+    },
+    "addyosmani/skills/performance-optimization/references/optimization-patterns.md": {
+      "git_blob": "63e27bcc7a051c3dc23c164f146f374e119874cc",
+      "mode": "100644",
+      "sha256": "fbf724076ffb8ac1a28e1a2773c0b550f5361090024b2dd32e5a682c69b7945f"
+    },
+    "be-ambitious/LICENSE": {
+      "git_blob": "86139c9c6c695f11c834741deba965f9aa57e898",
+      "mode": "100644",
+      "sha256": "210b65e17b4241e0fa3e952d1dde87d40fa7f89c62b237483e6c39870b45e550"
+    },
+    "be-ambitious/README.md": {
+      "git_blob": "d71043ff0e09230592a4422cd2e18301e8b56bcf",
+      "mode": "100644",
+      "sha256": "edd9a4ca1abf80300b75478e2cf59ec87456d2998da0340452f5fd27215ab473"
+    },
+    "be-ambitious/SKILL.md": {
+      "git_blob": "9870754edbc228cab8a74fb52be520b9f0ef5a7f",
+      "mode": "100644",
+      "sha256": "b180b90b55f1bb3b6100a9558929480197e3c1c68b59de7d96b00f7ca2ec3c5b"
+    },
+    "be-ambitious/assets/banner.png": {
+      "git_blob": "02eb1c63167e827c9f6565fd66e31c08df851240",
+      "mode": "100644",
+      "sha256": "8ca16518e045f94196d557aa77fae3d58a2d3aac2de96fc29e7646cf8a849daf"
+    },
+    "humanizer/LICENSE": {
+      "git_blob": "625297fb778f32eb39d3a5b97e3e3b611b7304d6",
+      "mode": "100644",
+      "sha256": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96"
+    },
+    "humanizer/SKILL.md": {
+      "git_blob": "175bf05f45ae3bf566059a560467166d93a9599c",
+      "mode": "100644",
+      "sha256": "804a119e924ac30295b298213e0b71b3e38b2667b8ef4fb7b69e9246369b9045"
+    },
+    "mattpocock/LICENSE": {
+      "git_blob": "f1dd2c09108dde1a5f56097cee8461b3ea834499",
+      "mode": "100644",
+      "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5"
+    },
+    "mattpocock/skills/productivity/grilling/SKILL.md": {
+      "git_blob": "d2f09a18e6a6c65c55f1271ba08dfeaf06f0bed3",
+      "mode": "100644",
+      "sha256": "a146842ed93ca43d833550fa9adf02e58cb63c83fea9d4b4522995b82242d4e2"
+    },
+    "mattpocock/skills/productivity/grilling/agents/openai.yaml": {
+      "git_blob": "ddbdb96139c0c1dfe6bca698f39d0465674b8a39",
+      "mode": "100644",
+      "sha256": "1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b"
+    },
+    "ponytail/LICENSE": {
+      "git_blob": "715d483338cea4365f0d91a27799cf61226d6bcf",
+      "mode": "100644",
+      "sha256": "fb1bc6909ac3ef82d5c22106e32ef682b0cff66788fa915fb9b53b15c9d2f3ab"
+    },
+    "ponytail/skills/ponytail-review/SKILL.md": {
+      "git_blob": "a50e3ac6ded6fccc9edae34ce37877bbce11e3fa",
+      "mode": "100644",
+      "sha256": "33fe4ebe22a460924e5d4a261e223df22e409cc94ab76182bee9fb91a3ef022e"
+    },
+    "ponytail/skills/ponytail/SKILL.md": {
+      "git_blob": "d64edd32265ba21cbf5270158f04e97d96925f27",
+      "mode": "100644",
+      "sha256": "9badd22a32e19cb884e46dfa8d3aae82bb81dfa5484105b8b4f0262df823a509"
+    },
+    "pstack/pstack/LICENSE": {
+      "git_blob": "6b5400237fdf6545be0b8fae370d6f2fcff8fb25",
+      "mode": "100644",
+      "sha256": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+    },
+    "pstack/pstack/skills/principle-test-behavior-not-implementation/SKILL.md": {
+      "git_blob": "78c9389bfe707d6d56485ade32c59150958228f9",
+      "mode": "100644",
+      "sha256": "f7223698623b6a26fea49c751e466b38e6691b1f32ce841d3983e7ffbe2b74a6"
+    },
+    "superpowers/LICENSE": {
+      "git_blob": "abf0390320aa14406af7a520b9b0739fdda9bf08",
+      "mode": "100644",
+      "sha256": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400"
+    },
+    "superpowers/skills/systematic-debugging/SKILL.md": {
+      "git_blob": "62fc752aaef59a8bbed5d305f4cadc60f8ae07ed",
+      "mode": "100644",
+      "sha256": "51c6435d98c83c42c96ba7c35725a0b2c376cd487fb1a4e6bd0ddbe7e33ef202"
+    },
+    "superpowers/skills/systematic-debugging/condition-based-waiting-example.ts": {
+      "git_blob": "703a06b653160d060bbf46ab5c6e0cd7446bd592",
+      "mode": "100644",
+      "sha256": "40ae5ebe497fdf310200e43fe986552546d0a22837c0d39e855db1cfd33eb88e"
+    },
+    "superpowers/skills/systematic-debugging/condition-based-waiting.md": {
+      "git_blob": "70994f777c586f7d4c43033aac34c7cf0da6688b",
+      "mode": "100644",
+      "sha256": "e89fec8400d6cd50f43407cec9fab50976ba4d55d0ec2eb51c0bd68036b54c26"
+    },
+    "superpowers/skills/systematic-debugging/defense-in-depth.md": {
+      "git_blob": "e2483354dc2b62478a2624e34ca18bc0efe887b2",
+      "mode": "100644",
+      "sha256": "1e175fb86fc357e58c6aebf5441e481e1b7868b4380c0456b63a17eefbd18ba7"
+    },
+    "superpowers/skills/systematic-debugging/find-polluter.sh": {
+      "git_blob": "985f5d08ccf8a3f2d40739cfcaf4413bb24bf1cb",
+      "mode": "100755",
+      "sha256": "dd7b8f13c4cc2a24b33ff87b18da9248f3e1c80a085c3316224f69ff0fa5c43c"
+    },
+    "superpowers/skills/systematic-debugging/root-cause-tracing.md": {
+      "git_blob": "0e72e8f9566b7ef85e814633d1feacad9d0c5868",
+      "mode": "100644",
+      "sha256": "75b933b6a8c40bdb2031b10f21654395b56ec6ab6bc7b018c18d3fe57aeb7fb8"
+    },
+    "superpowers/skills/test-driven-development/SKILL.md": {
+      "git_blob": "46838cc9e893c06259e3bdad0fc2425b36242f15",
+      "mode": "100644",
+      "sha256": "64b03fce4aee5a97a93160cea8111f3ba13a17b7c001db4bd5836d67fd10705d"
+    },
+    "superpowers/skills/test-driven-development/writing-good-tests.md": {
+      "git_blob": "d3c4482fd30b4f9084bb61545fe73939a7502c28",
+      "mode": "100644",
+      "sha256": "51471c853306ff92ca8bb41dcaea05f31c0e46b03651f8f3c99754b7172f4ae1"
+    },
+    "superpowers/skills/verification-before-completion/SKILL.md": {
+      "git_blob": "7d45333cc4a49c57a80df6c1fe2fa777a207afbc",
+      "mode": "100644",
+      "sha256": "2befe7fc55bcadaa3d97dd9e8efeb633d2561c0ebe74c5a8b17c4d9e7e4520b3"
+    }
+  },
+  "manifest_sha256": "a106fe200cbc78f2df08c791eec4a911363d6117559c7954ac2dea83a88a7198",
+  "schema": 1,
+  "sources": {
+    "addyosmani": {
+      "commit": "301b02b12bff98e4688e6984af6556802322bbde",
+      "ref": "main",
+      "repository": "addyosmani/agent-skills",
+      "repository_id": 1158722119,
+      "tree": "f6cf69d25c76d19be91cf3609c227a6b826eea5d"
+    },
+    "be-ambitious": {
+      "commit": "dc116a3ebd8cf772e4d0930626f67369bd60399d",
+      "ref": "main",
+      "repository": "robonuggets/be-ambitious",
+      "repository_id": 1422807634,
+      "tree": "6afc91a8bc0c578b79f8627d6e3b33b9d4eac597"
+    },
+    "humanizer": {
+      "commit": "b48c832f0f809c1b5658edbb838c2521b72f2413",
+      "ref": "main",
+      "repository": "blader/humanizer",
+      "repository_id": 1136666433,
+      "tree": "1fe9a61991dfc2b8906f88bedc0f32f1ef074234"
+    },
+    "mattpocock": {
+      "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",
+      "ref": "main",
+      "repository": "mattpocock/skills",
+      "repository_id": 1148788086,
+      "tree": "a73b182b5f22565e829e0969eb0bfd284508a7b8"
+    },
+    "ponytail": {
+      "commit": "96608e078b2d5ea607c5c3b8b5a54d1c1fba6846",
+      "ref": "main",
+      "repository": "DietrichGebert/ponytail",
+      "repository_id": 1266797999,
+      "tree": "6bdee088de8ae2cfa05468b30291baa6f5faa62c"
+    },
+    "pstack": {
+      "commit": "5866df557357d005b3c0c9d3da0d9e739b4bdde3",
+      "ref": "main",
+      "repository": "cursor/plugins",
+      "repository_id": 1140229822,
+      "tree": "9cc410890f6919440335f77d8a0b6439703a1363"
+    },
+    "superpowers": {
+      "commit": "22f0b463e7a5e579904dd6211a520321035526f7",
+      "ref": "main",
+      "repository": "obra/superpowers",
+      "repository_id": 1073224795,
+      "tree": "8fddc972a73e9af7501442df0e638d8e29842b6b"
+    }
+  }
+}

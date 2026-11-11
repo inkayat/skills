@@ -5,6 +5,7 @@ import json
 import os
 from pathlib import Path
 import subprocess
+import stat
 import sys
 import tempfile
 import unittest
@@ -183,20 +184,60 @@ class UpstreamTests(unittest.TestCase):
                 path.write_bytes(BODY)
                 path.chmod(0o644)
 
-    def test_git_checkout_under_restrictive_umask_verifies_but_exec_bit_drift_is_refused(self):
+    def test_git_checkout_under_restrictive_umask_works_without_recovery_chmod(self):
         self.files["skills/demo/run.sh"] = b"#!/bin/sh\n"
         self.executables.add("skills/demo/run.sh")
         self.publish()
         self.command()
-        script = self.root / "upstream/demo/skills/demo/run.sh"
-        self.assertTrue(script.stat().st_mode & 0o111)
-        for p in (self.root / "upstream").rglob("*"):
-            if p.is_file():
-                p.chmod(0o700 if p == script else 0o600)
+        tree = self.root / "upstream"
+        script = tree / "demo/skills/demo/run.sh"
+        plain_file = tree / "demo/skills/demo/SKILL.md"
+        self.assertTrue(script.stat().st_mode & stat.S_IXUSR)
+
+        def restrict():
+            for p in tree.rglob("*"):
+                if p.is_file():
+                    p.chmod(0o700 if p == script else 0o600)
+
+        def contents():
+            return {rel: data for rel, (data, _) in self.snapshot().items()}
+
+        restrict()
+        before = self.snapshot()
         self.assertEqual(self.command("verify")["status"], "verified")
         self.assertEqual(self.command("check")["status"], "current")
-        script.chmod(0o600)
+        self.assertEqual(self.command()["status"], "current")
+        self.assertEqual(self.snapshot(), before)
+
+        self.files["skills/demo/references/guide.md"] = b"Revised guide.\n"
+        self.publish(COMMIT_B, TREE_B)
+        self.command()
+        self.assertEqual((tree / "demo/skills/demo/references/guide.md").read_bytes(), b"Revised guide.\n")
+        self.assertTrue(script.stat().st_mode & stat.S_IXUSR)
+        self.assertFalse(plain_file.stat().st_mode & stat.S_IXUSR)
+        self.assertEqual(self.command("verify")["status"], "verified")
+
+        restrict()
+        saved = contents()
+        tree.rename(self.base / "saved-upstream")
+        self.command("update", "--locked")
+        self.assertEqual(self.command("verify")["status"], "verified")
+        self.assertEqual(contents(), saved)
+        self.assertEqual((self.root / "first-party/mine.md").read_bytes(), b"manual original\n")
+        self.assertEqual((self.root / "unrelated.txt").read_bytes(), b"leave this alone\n")
+
+        restrict()
+        for victim, mode in ((script, 0o600), (plain_file, 0o700)):
+            victim.chmod(mode)
+            before = self.snapshot()
+            self.command("verify", expected=2, error="local_drift")
+            self.command(expected=2, error="local_drift")
+            self.assertEqual(self.snapshot(), before)
+            restrict()
+        plain_file.write_bytes(b"manual edit\n")
+        before = self.snapshot()
         self.command("verify", expected=2, error="local_drift")
+        self.assertEqual(self.snapshot(), before)
 
     def test_local_symlink_escape_is_not_followed_or_overwritten(self):
         self.command()

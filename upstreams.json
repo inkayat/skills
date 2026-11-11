@@ -24,10 +24,12 @@
     {
       "repository": "mattpocock/skills",
       "include": [
-        "skills/productivity/grilling"
+        "skills/productivity/grilling",
+        "skills/engineering/codebase-design"
       ],
       "skills": {
-        "skills/productivity/grilling/SKILL.md": "grilling"
+        "skills/productivity/grilling/SKILL.md": "grilling",
+        "skills/engineering/codebase-design/SKILL.md": "codebase-design"
       },
       "id": "mattpocock",
       "repository_id": 1148788086,
@@ -37,7 +39,8 @@
           "LICENSE": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5"
         },
         "skill_headers": {
-          "skills/productivity/grilling/SKILL.md": null
+          "skills/productivity/grilling/SKILL.md": null,
+          "skills/engineering/codebase-design/SKILL.md": null
         }
       }
     },
@@ -92,11 +95,14 @@
       "include": [
         "skills/code-simplification",
         "skills/performance-optimization",
+        "skills/planning-and-task-breakdown",
+        "references/definition-of-done.md",
         "references/performance-checklist.md"
       ],
       "skills": {
         "skills/code-simplification/SKILL.md": "code-simplification",
-        "skills/performance-optimization/SKILL.md": "performance-optimization"
+        "skills/performance-optimization/SKILL.md": "performance-optimization",
+        "skills/planning-and-task-breakdown/SKILL.md": "planning-and-task-breakdown"
       },
       "id": "addyosmani",
       "repository_id": 1158722119,
@@ -107,7 +113,8 @@
         },
         "skill_headers": {
           "skills/code-simplification/SKILL.md": null,
-          "skills/performance-optimization/SKILL.md": null
+          "skills/performance-optimization/SKILL.md": null,
+          "skills/planning-and-task-breakdown/SKILL.md": null
         }
       }
     },

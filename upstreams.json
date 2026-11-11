@@ -1,0 +1,160 @@
+{
+  "schema": 1,
+  "sources": [
+    {
+      "repository": "blader/humanizer",
+      "include": [
+        "SKILL.md"
+      ],
+      "skills": {
+        "SKILL.md": "humanizer"
+      },
+      "id": "humanizer",
+      "repository_id": 1136666433,
+      "ref": "main",
+      "terms": {
+        "files": {
+          "LICENSE": "4ac4810254ab36d45419141aeb8e69bf50652cfafe5b2dab947d06d44e5cbf96"
+        },
+        "skill_headers": {
+          "SKILL.md": "MIT"
+        }
+      }
+    },
+    {
+      "repository": "mattpocock/skills",
+      "include": [
+        "skills/productivity/grilling"
+      ],
+      "skills": {
+        "skills/productivity/grilling/SKILL.md": "grilling"
+      },
+      "id": "mattpocock",
+      "repository_id": 1148788086,
+      "ref": "main",
+      "terms": {
+        "files": {
+          "LICENSE": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5"
+        },
+        "skill_headers": {
+          "skills/productivity/grilling/SKILL.md": null
+        }
+      }
+    },
+    {
+      "repository": "obra/superpowers",
+      "include": [
+        "skills/systematic-debugging",
+        "skills/test-driven-development",
+        "skills/verification-before-completion"
+      ],
+      "skills": {
+        "skills/systematic-debugging/SKILL.md": "systematic-debugging",
+        "skills/test-driven-development/SKILL.md": "test-driven-development",
+        "skills/verification-before-completion/SKILL.md": "verification-before-completion"
+      },
+      "id": "superpowers",
+      "repository_id": 1073224795,
+      "ref": "main",
+      "terms": {
+        "files": {
+          "LICENSE": "a37e0e9697144819e1d965176ac4ae5bc3fa02d11e7812036bbcadf6dafe2400"
+        },
+        "skill_headers": {
+          "skills/systematic-debugging/SKILL.md": null,
+          "skills/test-driven-development/SKILL.md": null,
+          "skills/verification-before-completion/SKILL.md": null
+        }
+      }
+    },
+    {
+      "repository": "cursor/plugins",
+      "include": [
+        "pstack/skills/principle-test-behavior-not-implementation"
+      ],
+      "skills": {
+        "pstack/skills/principle-test-behavior-not-implementation/SKILL.md": "principle-test-behavior-not-implementation"
+      },
+      "id": "pstack",
+      "repository_id": 1140229822,
+      "ref": "main",
+      "terms": {
+        "files": {
+          "pstack/LICENSE": "bc957ca6bee02792566a1a028d105e02e247c6e77cf057061674273da77b200e"
+        },
+        "skill_headers": {
+          "pstack/skills/principle-test-behavior-not-implementation/SKILL.md": null
+        }
+      }
+    },
+    {
+      "repository": "addyosmani/agent-skills",
+      "include": [
+        "skills/code-simplification",
+        "skills/performance-optimization",
+        "references/performance-checklist.md"
+      ],
+      "skills": {
+        "skills/code-simplification/SKILL.md": "code-simplification",
+        "skills/performance-optimization/SKILL.md": "performance-optimization"
+      },
+      "id": "addyosmani",
+      "repository_id": 1158722119,
+      "ref": "main",
+      "terms": {
+        "files": {
+          "LICENSE": "6f202f8bd568cd730dbb2b0d1f8e243bc74c2fa1f64dbce9b2c7ea08bd5c9fd7"
+        },
+        "skill_headers": {
+          "skills/code-simplification/SKILL.md": null,
+          "skills/performance-optimization/SKILL.md": null
+        }
+      }
+    },
+    {
+      "repository": "DietrichGebert/ponytail",
+      "include": [
+        "skills/ponytail",
+        "skills/ponytail-review"
+      ],
+      "skills": {
+        "skills/ponytail/SKILL.md": "ponytail",
+        "skills/ponytail-review/SKILL.md": "ponytail-review"
+      },
+      "id": "ponytail",
+      "repository_id": 1266797999,
+      "ref": "main",
+      "terms": {
+        "files": {
+          "LICENSE": "fb1bc6909ac3ef82d5c22106e32ef682b0cff66788fa915fb9b53b15c9d2f3ab"
+        },
+        "skill_headers": {
+          "skills/ponytail/SKILL.md": "MIT",
+          "skills/ponytail-review/SKILL.md": null
+        }
+      }
+    },
+    {
+      "repository": "robonuggets/be-ambitious",
+      "include": [
+        "SKILL.md",
+        "README.md",
+        "assets"
+      ],
+      "skills": {
+        "SKILL.md": "be-ambitious"
+      },
+      "id": "be-ambitious",
+      "repository_id": 1422807634,
+      "ref": "main",
+      "terms": {
+        "files": {
+          "LICENSE": "210b65e17b4241e0fa3e952d1dde87d40fa7f89c62b237483e6c39870b45e550"
+        },
+        "skill_headers": {
+          "SKILL.md": "MIT"
+        }
+      }
+    }
+  ]
+}

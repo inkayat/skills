@@ -137,9 +137,9 @@ def local_state(root, lock, allow_missing=False):
             require(rel in expected, "local_drift", f"Unowned local file: {rel}")
             entry = expected[rel]
             data = plain(path, MAX_FILE)
-            mode = 0o755 if entry["mode"] == "100755" else 0o644
+            executable = bool(path.stat().st_mode & stat.S_IXUSR)
             require(digest(data) == entry["sha256"] and blob_id(data) == entry["git_blob"]
-                    and stat.S_IMODE(path.stat().st_mode) == mode,
+                    and executable == (entry["mode"] == "100755"),
                     "local_drift", f"Local edit or mode drift: {rel}")
             found[rel] = data
     require(set(found) == set(expected) and dirs == expected_dirs,

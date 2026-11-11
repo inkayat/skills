@@ -52,6 +52,7 @@ class UpstreamTests(unittest.TestCase):
         self.write_config()
         self.files = {"skills/demo/SKILL.md": BODY,
                       "skills/demo/references/guide.md": GUIDE, "LICENSE": TERMS}
+        self.executables = set()
         self.publish()
 
     def write_config(self):
@@ -69,7 +70,8 @@ class UpstreamTests(unittest.TestCase):
         entries = []
         for path, data in self.files.items():
             oid = blob(data)
-            entries.append({"path": path, "mode": "100644", "type": "blob",
+            entries.append({"path": path, "mode": "100755" if path in self.executables else "100644",
+                            "type": "blob",
                             "sha": oid, "size": len(data)})
             self.response("/repos/example/demo/git/blobs/" + oid,
                           {"sha": oid, "size": len(data), "encoding": "base64",
@@ -170,7 +172,7 @@ class UpstreamTests(unittest.TestCase):
         for kind in ("content", "mode", "missing", "extra"):
             with self.subTest(kind=kind):
                 if kind == "content": path.write_bytes(b"manual edit\n")
-                if kind == "mode": path.chmod(0o600)
+                if kind == "mode": path.chmod(0o755)
                 if kind == "missing": path.unlink()
                 extra = self.root / "upstream/unrelated-manual.txt"
                 if kind == "extra": extra.write_bytes(b"manual addition\n")
@@ -180,6 +182,21 @@ class UpstreamTests(unittest.TestCase):
                 if kind == "extra": extra.unlink()
                 path.write_bytes(BODY)
                 path.chmod(0o644)
+
+    def test_git_checkout_under_restrictive_umask_verifies_but_exec_bit_drift_is_refused(self):
+        self.files["skills/demo/run.sh"] = b"#!/bin/sh\n"
+        self.executables.add("skills/demo/run.sh")
+        self.publish()
+        self.command()
+        script = self.root / "upstream/demo/skills/demo/run.sh"
+        self.assertTrue(script.stat().st_mode & 0o111)
+        for p in (self.root / "upstream").rglob("*"):
+            if p.is_file():
+                p.chmod(0o700 if p == script else 0o600)
+        self.assertEqual(self.command("verify")["status"], "verified")
+        self.assertEqual(self.command("check")["status"], "current")
+        script.chmod(0o600)
+        self.command("verify", expected=2, error="local_drift")
 
     def test_local_symlink_escape_is_not_followed_or_overwritten(self):
         self.command()

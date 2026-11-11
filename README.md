@@ -85,7 +85,7 @@ For controlled offline reproduction, `--offline <directory>` reads JSON API snap
 
 ## Consumption and limits
 
-Use the [consumer map](docs/sources.md#consumer-ownership-and-binding) before binding anything. Conventional frontmatter and source-relative references are checked; **native consumer execution and model benefit are not claimed**. In particular, Astro's folder-only copy cannot carry Performance Optimization's `../../references/performance-checklist.md` by copying only that skill's leaf folder.
+Use the [consumer map](docs/sources.md#consumer-ownership-and-binding) before binding anything. Conventional frontmatter and source-relative references are checked; **native consumer execution and model benefit are not claimed**. In particular, Astro's folder-only copy cannot carry the ancestor references of Performance Optimization and Planning and task breakdown; see the [Astro notes](docs/sources.md#astro).
 
 The former task-local `minimal-change`/`faithful-editing` candidates and evaluation engine are no longer active repository content. Complete prior source and experiment evidence was preserved privately before this cutover. Their failed benefit comparisons were not reclassified, and no new model evaluations were run for this upstream reorganization.
 

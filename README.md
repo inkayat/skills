@@ -59,13 +59,15 @@ python3 scripts/update_upstreams.py update
 python3 scripts/update_upstreams.py update --locked
 ```
 
+[CI](.github/workflows/ci.yml) runs the same offline suite and locked-file verification on pull requests and pushes to `main`, using Python 3.14. The canonical command is pinned in [`.no-mistakes.yaml`](.no-mistakes.yaml). CI does not run online checks or refreshes, request personal credentials, or modify consumer installations.
+
 `check`: exit `0` = current, `1` = update available, `2` = refusal/error. `update` and `verify`: `0` = success, `2` = refusal/error. `verify` does not check remote freshness. JSON results identify the outcome and source layout; the lock is the authoritative version/file inventory. Never treat an unavailable source as current.
 
 Tracking refs are explicit in the manifest; the initial selection follows `main`. Installed consumers do **not** follow those refs. A refresh resolves each ref once into a full immutable commit and writes that pin into the lock. Review the resulting source/lock diff before any later consumer binding. Existing consumer stable-release pins are not advanced.
 
 ### Automatic invocation, not automatic adoption
 
-`python3 scripts/update_upstreams.py update` is a repeatable noninteractive refresh entry point for later authorized automation. **No cron, workflow, bot, service, remote writer or consumer reconciliation is activated.** Activating unattended updates still requires an exact checkout/target, scheduler and write permissions to be established separately. The command never commits, pushes or opens a pull request.
+`python3 scripts/update_upstreams.py update` is a repeatable noninteractive refresh entry point for later authorized automation. **No unattended refresh, scheduler, remote writer or consumer reconciliation is activated.** Activating unattended updates still requires an exact checkout/target, scheduler and write permissions to be established separately. The command never commits, pushes or opens a pull request.
 
 ### Drift and terms
 

@@ -1,0 +1,4 @@
+commands:
+  test: >-
+    python3 -m unittest discover -s tests -v &&
+    python3 scripts/update_upstreams.py verify

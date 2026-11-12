@@ -63,6 +63,8 @@ For later authorized explicit-path use, retain the complete checkout, select the
 
 The available local TLW reference is README-only: “Reusable workflow presets and host-native skill bindings.” It contains no executable loader, configuration, source lock or schema to validate. The current owner contract explicitly keeps TLW on **Super Board skills**. No Super Board source/pin is invented, no alternate owner is installed, and current TLW preparation is not gated on this repository. The files here can be considered for a later explicit host-native binding; native TLW loading is **unverified**.
 
+Later, separate from that intake observation and ownership: [`first-party/tlw/SKILL.md`](../first-party/tlw/SKILL.md) is an original, explicit-use handoff for running one authorized job through an already-installed TLW (reviewed against TLW `1d401c432228b5dda7d8c85a9018bfa95f2c1940` only). It copies no TLW text, adds no router or wrapper, and does not migrate TLW's Super Board skills or pins here. It is not installed or activated, the updater does not manage or validate it, and it has had no live TLW run or model trial.
+
 ### Astro
 
 Read-only evidence: `internal/skills/skills.go` and `internal/skills/builtin.go`. Astro already embeds Be Ambitious at `dc116a3ebd8cf772e4d0930626f67369bd60399d`; its body SHA-256 is `b180b90b55f1bb3b6100a9558929480197e3c1c68b59de7d96b00f7ca2ec3c5b`. That owner and its source copies remain unchanged.
@@ -81,4 +83,4 @@ Use an explicit entrypoint with the full retained source context in a capable ag
 
 `python3 scripts/update_upstreams.py verify` checks the manifest/lock relationship, source file identities/modes, conventional name/description bounds and retained source-relative file references. The offline suite exercises actual import/update/first-party preservation and failure behavior in isolated temporary directories. An online `check` resolves public upstream identities read-only.
 
-Those results establish repository/update mechanics, **not skill success, native consumer adoption, stylistic quality, AI-detector accuracy or model benefit**. The superseded original candidates' failed comparisons remain failed in private evidence. There are no active first-party skills or new model evaluations in this reorganization.
+Those results establish repository/update mechanics, **not skill success, native consumer adoption, stylistic quality, AI-detector accuracy or model benefit**. The superseded original candidates' failed comparisons remain failed in private evidence. The only first-party skill is `first-party/tlw`, which the updater and `verify` do not read; there have been no model evaluations of it or of the upstream reorganization.

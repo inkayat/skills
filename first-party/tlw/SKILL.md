@@ -6,7 +6,7 @@ license: MIT
 
 # TLW job entry
 
-A read-and-apply handoff. It adds no code, command, router, wrapper or lifecycle of its own: it names the existing TLW instructions to read and what must hold before, during and after one job. Everything below was derived from TLW commit `8566b3b0d39b3fa1bf21d5138b63ea0c0e22297c` (Super Board base `d0b7d5a6850614ca809477c1af43d5d7da408726`, `VERSION` 3.3.0) and nothing else.
+A read-and-apply handoff. It adds no code, command, router, wrapper or lifecycle of its own: it names the existing TLW instructions to read and what must hold before, during and after one job. Everything below was reviewed against TLW commit `8566b3b0d39b3fa1bf21d5138b63ea0c0e22297c` (Super Board base `d0b7d5a6850614ca809477c1af43d5d7da408726`, `VERSION` 3.3.0); the only change from the earlier reviewed `1d401c432228b5dda7d8c85a9018bfa95f2c1940` is the grader personal-config isolation.
 
 Paths without a prefix are relative to the TLW source root `<TLW>`. A target project holds the same files as `.claude/bin` (`scripts/`), `.claude/skills` (`skills/`) and `.claude/factory` (`factory/`) (TLW `README.md`, "Flow"). `<target>` is the project checkout that holds that installation.
 
@@ -109,12 +109,11 @@ Report each fact only if observed: lanes run with status, exact head SHA at the 
 ## Evidence and limits
 
 - Observed live (`inkayat/tlw-live-trial-1` PR 16): the native merge gate verified the approval and base and squash-merged. That run used the gate only, after a one-time operator repair of historical PR/issue metadata; no planner, wave, Build, QA, Reviewer or product model ran. A full Review lane is a `codex exec` product-model run, which that test did not exercise.
-- Prior bounded evidence, earlier revision only: a FirstMate file-pointer handoff of this skill drove one card through native Build, QA and Review on TLW `1d401c4…` (explicit `--codex`, one card) to the human merge gate (exit 7); a later merge was a separate attended act, not a native gate rerun. A model-free readback in one harness also showed a `/tlw <job>` template expanding to a pointer to this file. That is not evidence about `8566b3b`: no native job or model trial has run on it, and the earlier result does not transfer.
 - Body and comment conventions in `8566b3b` (PR-body writer refuses a status rewrite that changes `needs-you:` steps, exit 64; Reviewer instructions keep one canonical request) are checked by model-free tests and instruction text. They do not show that a future model obeys them. Raw `gh api` edits bypass the writer; the gate then stays strict (exit 7).
 - The grader's `--ignore-user-config` is proven only by TLW's fake-`codex` contract tests (argv and the documented flag semantics). No live grading run showed that a real `codex` process ignored a personal config.
 - A newer request-less `Reason tag: 🙋` comment voids the canonical request. Two different things are involved. Preventing a model from posting such a comment is instruction-only (nothing stops it from posting). Refusing to merge after one exists is mechanical: the unchanged approval reader counts every trusted 🙋 comment as a request, so the gate stays at exit 7 until a person answers a fresh pinned request.
 - Configured checks may be narrow, no CI configured is not passing, and branch protection can be unreadable. Do not treat any as proof.
-- This file was not run through a model trial for `8566b3b` and no live TLW command was executed to write it. This repository installs or activates nothing; any host command or global link (for example `/tlw`) is external integration whose presence and behavior must be verified where it is used. Use this file through an explicit file-pointer handoff and never assume such a command exists.
+- This file was not run through a model trial for `8566b3b` and no live TLW command was executed to write it. This repository does not install or activate it; any host command is external integration, verified where used. Use this file through an explicit file-pointer handoff and never assume such a command exists.
 
 ## Handoff example (template, not executed)
 

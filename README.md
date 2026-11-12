@@ -10,7 +10,7 @@ This is a source repository, not an installer, marketplace or activation policy.
 upstreams.json                 selected repositories, paths and reviewed terms
 upstreams.lock.json            exact commit/tree pins, file hashes and modes
 upstream/<source>/<original-path>
-first-party/                   future original skills; never managed by updater
+first-party/                   original skills; never managed by updater
 scripts/update_upstreams.py    one repository-local refresh command
 tests/test_upstreams.py        offline import/update/safety tests
 ```
@@ -36,6 +36,8 @@ Paths below are relative to `upstream/`. Keep the complete source tree when prep
 | Ponytail | `ponytail/skills/ponytail/SKILL.md` | Small complete changes and existing-facility reuse; configured source family |
 | Ponytail review | `ponytail/skills/ponytail-review/SKILL.md` | Correctness/safety/necessity review; configured source family |
 | Be ambitious | `be-ambitious/SKILL.md` | Explicit outcome/depth reframing; already an Astro-owned upstream at the inspected revision |
+
+The table above lists upstream skills only. Original skills are listed in [`first-party/README.md`](first-party/README.md); the only one is `tlw/SKILL.md`, an explicit-use handoff for one authorized TLW job. It is not installed or activated and has had no model trial.
 
 Firstmate-config still owns its roles, shared-skill pins and installation. **TLW remains on Super Board skills** until an explicitly authorized migration. Astro still owns its built-ins and native roots. Mirroring a source here does not change any of those owners. The separately approved manual global `minimal-change` copy is outside this repository and remains unchanged.
 

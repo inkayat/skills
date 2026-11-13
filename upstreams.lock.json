@@ -65,10 +65,30 @@
       "mode": "100644",
       "sha256": "804a119e924ac30295b298213e0b71b3e38b2667b8ef4fb7b69e9246369b9045"
     },
+    "knowledge-work-plugins/LICENSE": {
+      "git_blob": "f53c679acba79cbb292961fd9fb9e87ca20eab22",
+      "mode": "100644",
+      "sha256": "a6946284993aeec75c7d75906064b66210c46051e562077efb30eb6dcfe72e26"
+    },
+    "knowledge-work-plugins/engineering/skills/testing-strategy/SKILL.md": {
+      "git_blob": "4ff59410c8fe67872a98ca97135815b778ca1219",
+      "mode": "100644",
+      "sha256": "5c5e95830754bbdd838213fa05fc8f07523f591fd558fd3c86031ffd479f7a9e"
+    },
     "mattpocock/LICENSE": {
       "git_blob": "f1dd2c09108dde1a5f56097cee8461b3ea834499",
       "mode": "100644",
       "sha256": "0e7ac423bf2c6e223b7c5b156f8cf72da49d748e56a1641402c31f22ad07dbb5"
+    },
+    "mattpocock/skills/engineering/code-review/SKILL.md": {
+      "git_blob": "83183e0ad36fd0eef25d37c7e483284b7e34c1f0",
+      "mode": "100644",
+      "sha256": "9c921a8d88138a41401d8897ca1bb852088ab1b7b605cdd04edc13e3e8aab6dd"
+    },
+    "mattpocock/skills/engineering/code-review/agents/openai.yaml": {
+      "git_blob": "9076774ba327f49068db9273feceda03bfe940fa",
+      "mode": "100644",
+      "sha256": "8229ca854e11dc8e6aef2131ee03f31fb1561cf905fab9ccc325180cf3331352"
     },
     "mattpocock/skills/engineering/codebase-design/DEEPENING.md": {
       "git_blob": "cd94075cfd754d147555c5d747a16431ed4c7dd8",
@@ -89,6 +109,51 @@
       "git_blob": "3180715edb37f6e96bec42f92f00169faa8886ef",
       "mode": "100644",
       "sha256": "edebc9e4fcfe102114012575eaa9600b9b5fd08c311664f389c36e7bc717740f"
+    },
+    "mattpocock/skills/engineering/diagnosing-bugs/SKILL.md": {
+      "git_blob": "d039541ddd1c46e6ddbd662fe99d49b686fc5e12",
+      "mode": "100644",
+      "sha256": "849198df88cdb65fd0d97236604c1fca7ff2f22d2f705f9724a800d0266b118d"
+    },
+    "mattpocock/skills/engineering/diagnosing-bugs/agents/openai.yaml": {
+      "git_blob": "a13a755a77634ce61a649a3a0d905a66d3865b35",
+      "mode": "100644",
+      "sha256": "3e430dbe4334a87597488c060cb3dc3786bb00c9182877d6f5ec41f62490e90b"
+    },
+    "mattpocock/skills/engineering/diagnosing-bugs/scripts/hitl-loop.template.sh": {
+      "git_blob": "243198464a8401a7ba1d63b3708fa43c3d067665",
+      "mode": "100644",
+      "sha256": "35103539fc36873eea36074769ad454f9379d6fc8b2dc0e26ce987fd3bfe5503"
+    },
+    "mattpocock/skills/engineering/implement/SKILL.md": {
+      "git_blob": "bd49e472984c7b99aac40286fdae749bb955a842",
+      "mode": "100644",
+      "sha256": "483bdc4ccf4ac31d86ac7beeaa0d0db80313e71e120bb8c59b3196ae5decd53d"
+    },
+    "mattpocock/skills/engineering/implement/agents/openai.yaml": {
+      "git_blob": "f8794dc153b409052a9167baf10858cf01b36175",
+      "mode": "100644",
+      "sha256": "8970a8596ade0c28ab427f41a4ea242d6bdf6186c59ebf55e1238dbecaab79dc"
+    },
+    "mattpocock/skills/engineering/tdd/SKILL.md": {
+      "git_blob": "01eadaa34e7c9a63a67d6dc3cce1cc81b0e49985",
+      "mode": "100644",
+      "sha256": "5505d25bbaa8fc14a79e4d20163936958992a2995b7f1dd1d6197edc9ed722e0"
+    },
+    "mattpocock/skills/engineering/tdd/agents/openai.yaml": {
+      "git_blob": "651b838a7663e027b1b8884491e867f26bb9a021",
+      "mode": "100644",
+      "sha256": "ea6f01cf1b8c06a4b0f5b649d74b1b8ce8685e72af1b38d70d877693e092af0b"
+    },
+    "mattpocock/skills/engineering/tdd/mocking.md": {
+      "git_blob": "71cbfee674d93244ce81d1830b930ca9a69200bd",
+      "mode": "100644",
+      "sha256": "3ceb807fdf4a47d6a93d4d9a891e5ba6d362a6247bd08adc451feebfc17361ef"
+    },
+    "mattpocock/skills/engineering/tdd/tests.md": {
+      "git_blob": "7ab86479f925a1f9e8ba680af33cb3b12e015381",
+      "mode": "100644",
+      "sha256": "859f9e592c188fda4fc7277dd180e4ce9c7a2e13f6efe1f6f29eccc9d28c106a"
     },
     "mattpocock/skills/productivity/grilling/SKILL.md": {
       "git_blob": "d2f09a18e6a6c65c55f1271ba08dfeaf06f0bed3",
@@ -176,7 +241,7 @@
       "sha256": "2befe7fc55bcadaa3d97dd9e8efeb633d2561c0ebe74c5a8b17c4d9e7e4520b3"
     }
   },
-  "manifest_sha256": "2c249a6209285e52ca4d4290f4e0af9463985b1763c0bac0f6485c8861f747db",
+  "manifest_sha256": "2ef96ee4abc09c66ff4a0d69e17aeaaa902d8070baa6815a418153f21c48376f",
   "schema": 1,
   "sources": {
     "addyosmani": {
@@ -199,6 +264,13 @@
       "repository": "blader/humanizer",
       "repository_id": 1136666433,
       "tree": "1fe9a61991dfc2b8906f88bedc0f32f1ef074234"
+    },
+    "knowledge-work-plugins": {
+      "commit": "43ccfc0d22c5dbe2dd7e1b3670a6fbaed4dfe745",
+      "ref": "43ccfc0d22c5dbe2dd7e1b3670a6fbaed4dfe745",
+      "repository": "anthropics/knowledge-work-plugins",
+      "repository_id": 1140828898,
+      "tree": "14d6d4183959ef7d2e6d7e79bb517eda63c937ac"
     },
     "mattpocock": {
       "commit": "4ae2317ddb22b046e26455e4f9c9b3aaaf62212d",

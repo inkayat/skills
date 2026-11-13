@@ -26,6 +26,11 @@ Paths below are relative to `upstream/`. Keep the complete source tree when prep
 | Humanizer | `humanizer/SKILL.md` | Prose editing with factual meaning and register preserved |
 | Grilling | `mattpocock/skills/productivity/grilling/SKILL.md` | Explicit interactive plan/design interviews; not an unattended worker default |
 | Codebase design | `mattpocock/skills/engineering/codebase-design/SKILL.md` | Module/interface/seam design vocabulary and design-it-twice option comparison for structural decisions; no workflow or approval gate of its own |
+| Implement | `mattpocock/skills/engineering/implement/SKILL.md` | Explicit spec/ticket implementation; references canonical `tdd` and `code-review` |
+| TDD | `mattpocock/skills/engineering/tdd/SKILL.md` | Seam-based red/green development; distinct from Superpowers Test-driven development |
+| Code review | `mattpocock/skills/engineering/code-review/SKILL.md` | Standards/spec review against a supplied fixed point |
+| Diagnosing bugs | `mattpocock/skills/engineering/diagnosing-bugs/SKILL.md` | Reproduction-first diagnosis; includes the original HITL shell template as data |
+| Testing strategy | `knowledge-work-plugins/engineering/skills/testing-strategy/SKILL.md` | Test-plan design, coverage priorities and testing approaches |
 | Systematic debugging | `superpowers/skills/systematic-debugging/SKILL.md` | Diagnosis before fixes; configured firstmate-config source family |
 | Test-driven development | `superpowers/skills/test-driven-development/SKILL.md` | Behavioral red/green development; configured source family |
 | Verification before completion | `superpowers/skills/verification-before-completion/SKILL.md` | Evidence before success claims; configured source family |
@@ -36,6 +41,8 @@ Paths below are relative to `upstream/`. Keep the complete source tree when prep
 | Ponytail | `ponytail/skills/ponytail/SKILL.md` | Small complete changes and existing-facility reuse; configured source family |
 | Ponytail review | `ponytail/skills/ponytail-review/SKILL.md` | Correctness/safety/necessity review; configured source family |
 | Be ambitious | `be-ambitious/SKILL.md` | Explicit outcome/depth reframing; already an Astro-owned upstream at the inspected revision |
+
+The [seven original Super Board helpers](docs/sources.md#original-super-board-helper-additions) are all retained at canonical paths: five Matt Pocock methods, Anthropic Testing Strategy and Superpowers Verification Before Completion. This is library availability only; the separate mixed Claude/Codex test owns its own installation and execution. Imported `agents/openai.yaml` files remain supporting metadata, not registered agents or permissions. Upstream commit, Skill-tool, setup and delegation wording does not authorize those actions in a consumer session.
 
 The table above lists upstream skills only. Original skills are listed in [`first-party/README.md`](first-party/README.md); the only one is `tlw/SKILL.md`, an explicit-use handoff for one authorized TLW job. This repository does not install or activate it; see that README for its revision-specific evidence.
 
@@ -67,7 +74,7 @@ python3 scripts/update_upstreams.py update --locked
 
 `check`: exit `0` = current, `1` = update available, `2` = refusal/error. `update` and `verify`: `0` = success, `2` = refusal/error. `verify` does not check remote freshness. JSON results identify the outcome and source layout; the lock is the authoritative version/file inventory. Never treat an unavailable source as current.
 
-Tracking refs are explicit in the manifest; the initial selection follows `main`. Installed consumers do **not** follow those refs. A refresh resolves each ref once into a full immutable commit and writes that pin into the lock. Review the resulting source/lock diff before any later consumer binding. Existing consumer stable-release pins are not advanced.
+Tracking refs are explicit in the manifest. Existing sources follow `main`; Testing Strategy uses its supplied immutable commit. Installed consumers do **not** follow those refs. A refresh resolves each ref once into a full immutable commit and writes that pin into the lock. Review the resulting source/lock diff before any later consumer binding. Existing consumer stable-release pins are not advanced.
 
 ### Automatic invocation, not automatic adoption
 

@@ -25,11 +25,19 @@
       "repository": "mattpocock/skills",
       "include": [
         "skills/productivity/grilling",
-        "skills/engineering/codebase-design"
+        "skills/engineering/codebase-design",
+        "skills/engineering/implement",
+        "skills/engineering/tdd",
+        "skills/engineering/code-review",
+        "skills/engineering/diagnosing-bugs"
       ],
       "skills": {
         "skills/productivity/grilling/SKILL.md": "grilling",
-        "skills/engineering/codebase-design/SKILL.md": "codebase-design"
+        "skills/engineering/codebase-design/SKILL.md": "codebase-design",
+        "skills/engineering/implement/SKILL.md": "implement",
+        "skills/engineering/tdd/SKILL.md": "tdd",
+        "skills/engineering/code-review/SKILL.md": "code-review",
+        "skills/engineering/diagnosing-bugs/SKILL.md": "diagnosing-bugs"
       },
       "id": "mattpocock",
       "repository_id": 1148788086,
@@ -40,7 +48,11 @@
         },
         "skill_headers": {
           "skills/productivity/grilling/SKILL.md": null,
-          "skills/engineering/codebase-design/SKILL.md": null
+          "skills/engineering/codebase-design/SKILL.md": null,
+          "skills/engineering/implement/SKILL.md": null,
+          "skills/engineering/tdd/SKILL.md": null,
+          "skills/engineering/code-review/SKILL.md": null,
+          "skills/engineering/diagnosing-bugs/SKILL.md": null
         }
       }
     },
@@ -160,6 +172,26 @@
         },
         "skill_headers": {
           "SKILL.md": "MIT"
+        }
+      }
+    },
+    {
+      "repository": "anthropics/knowledge-work-plugins",
+      "include": [
+        "engineering/skills/testing-strategy"
+      ],
+      "skills": {
+        "engineering/skills/testing-strategy/SKILL.md": "testing-strategy"
+      },
+      "id": "knowledge-work-plugins",
+      "repository_id": 1140828898,
+      "ref": "43ccfc0d22c5dbe2dd7e1b3670a6fbaed4dfe745",
+      "terms": {
+        "files": {
+          "LICENSE": "a6946284993aeec75c7d75906064b66210c46051e562077efb30eb6dcfe72e26"
+        },
+        "skill_headers": {
+          "engineering/skills/testing-strategy/SKILL.md": null
         }
       }
     }
